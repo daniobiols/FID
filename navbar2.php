@@ -27,6 +27,9 @@
           <li class="nav-item">
             <a class="nav-link fuente" href="preguntas_frecuentes.php">BLOG</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link fuente" href="preguntas_frecuentes.php">PREGUNTAS FRECUENTES</a>
+          </li>
         </ul>
       </div>
 
@@ -69,14 +72,14 @@
         <img src="images/carritoLog.png" alt="">
       </button>
       <!--Boton OPCIONES DE USUARIO (iniciar sesion - registrarse)-->
-      <div class="dropdown">
+      <!-- <div class="dropdown">
         <button class="icono-banner btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="images/usuarioLog.png" alt="">
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        </button> -->
+        <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
           <!--Boton INICIAR SESION-->
           <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#loginModal" data-whatever="@getbootstrap">Iniciar sesión</button>
-          <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="loginModal" tabindex="-1" role="modal" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -172,7 +175,7 @@
           </div>
         </div>
         <?php } ?>
-        </div>
-      </div>
+        <!-- </div> -->
+      <!-- </div> -->
   </div>
 </nav>

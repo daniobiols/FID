@@ -14,6 +14,7 @@ if ($_POST){
 		$email = trim($_POST['emailReg']);
 		$pass = trim($_POST['passReg']);
 		$rpass = trim($_POST['rpassReg']);
+
 		// echo "<pre>";
 		// var_dump($_POST);
 
@@ -159,154 +160,10 @@ if ($_POST){
 
 
 			<!-- Productos slider-->
-			<div class="container-fluid">
 
-			  <div class="row">
-			    <div class="col-xs-12 col-sm-12 col-md-12">
-			      <div class="carousel carousel-showmanymoveone slide" id="itemslider">
-			        <div class="carousel-inner">
-
-			          <div class="item active">
-			            <div class="col-xs-12 col-sm-6 col-md-2">
-			              <a href="#"><img src="./images/mujer01.jpg" class="img-responsive center-block"></a>
-			              <h4 class="text-center">Campera Cuero</h4>
-			              <h5 class="text-center">4000,00 ARS</h5>
-			            </div>
-			          </div>
-
-			          <!-- <div class="item">
-			            <div class="col-xs-12 col-sm-6 col-md-2">
-			              <a href="#"><img src="./images/mujer01.jpg" class="img-responsive center-block"></a>
-			              <h4 class="text-center">Zapatillas Adidas</h4>
-			              <h5 class="text-center">4000,00 ARS</h5>
-			            </div>
-			          </div>
-
-			          <div class="item">
-			            <div class="col-xs-12 col-sm-6 col-md-2">
-			              <a href="#"><img src="./images/mujer01.jpg" class="img-responsive center-block"></a>
-			              <span class="badge">10%</span>
-			              <h4 class="text-center">Jean Levis</h4>
-			              <h5 class="text-center">4000,00 ARS</h5>
-			              <h6 class="text-center">5000,00 ARS</h6>
-			            </div>
-			          </div>
-
-			          <div class="item">
-			            <div class="col-xs-12 col-sm-6 col-md-2">
-			              <a href="#"><img src="./images/mujer01.jpg" class="img-responsive center-block"></a>
-			              <h4 class="text-center">Zapatillas Vans</h4>
-			              <h5 class="text-center">4000,00 ARS</h5>
-			            </div>
-			          </div>
-
-			          <div class="item">
-			            <div class="col-xs-12 col-sm-6 col-md-2">
-			              <a href="#"><img src="./images/mujer01.jpg" class="img-responsive center-block"></a>
-			              <h4 class="text-center">Buzo DC</h4>
-			              <h5 class="text-center">4000,00 ARS</h5>
-			            </div>
-			          </div>
-
-			          <div class="item">
-			            <div class="col-xs-12 col-sm-6 col-md-2">
-			              <a href="#"><img src="./images/mujer01.jpg" class="img-responsive center-block"></a>
-			              <h4 class="text-center">Remera Nike</h4>
-			              <h5 class="text-center">4000,00 ARS</h5>
-			            </div>
-			          </div> -->
-
-			        </div>
-
-			        <!-- <div id="slider-control">
-			        <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="./images/left.png" alt="Left" class="img-responsive"></a>
-			        <a class="right carousel-control" href="#itemslider" data-slide="next"><img src="./images/right.png" alt="Right" class="img-responsive"></a>
-			      </div> -->
-			      </div>
-			    </div>
-			  </div>
-			</div>
-
-
-        <!-- Productos mas Vendidos-->
-        <!-- <h2 id="art_solic">Productos mas Vendidos</h2>
-        <div class="row articulos">
-            <div class="shadow p-3 mb-5 bg-white rounded">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="./images/mujer01.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">u$s 20</h5>
-                        <p class="card-text">Campera Otawa</p>
-                        <a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="shadow p-3 mb-5 bg-white rounded">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="./images/mujer02.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">u$s 123</h5>
-                        <p class="card-text">Campera Lima</p>
-                        <a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="shadow p-3 mb-5 bg-white rounded">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="./images/hombre01.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">u$s 43</h5>
-                        <p class="card-text">Pantalon Milan</p>
-                        <a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="shadow p-3 mb-5 bg-white rounded">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="./images/hombre02.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">u$s 21</h5>
-                    <p class="card-text">Pantalon Berlin</p>
-                    <a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
-                </div>
-            </div>
-            </div>
-            <div class="shadow p-3 mb-5 bg-white rounded">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="./images/hombre03.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">u$s 55</h5>
-                        <p class="card-text">Camisa Buenos Aires</p>
-                        <a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="shadow p-3 mb-5 bg-white rounded">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="./images/nino04.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">u$s 74</h5>
-                        <p class="card-text">Gorra Buenos Aires</p>
-                        <a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <div class="shadow p-3 mb-5 bg-white rounded">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="./images/nino05.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">u$s 24</h5>
-                        <p class="card-text">Cartera Nevada</p>
-                        <a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr style="color: #0054b2;" /> -->
 
         <!--Categorias-->
-        <div class="categorias">
+        <!-- <div class="categorias">
             <h2 id="id_categorias">Categorias</h2>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mujer</button>
@@ -332,7 +189,7 @@ if ($_POST){
                     <button class="dropdown-item" type="button"><a href="productos.php#ninos">Accesorios</a></button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
       <hr style="color: #0054b2;" />
 
