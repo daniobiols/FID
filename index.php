@@ -134,28 +134,16 @@ if ($_POST){
       <!--Cuerpo principal-->
       <section class="main-section">
 
-				<!-- ------ACCESOS------ -->
+				<!---ACCESOS----->
 	      <div class="container-boxes">
 	        <div class="box">
 	          <img class="box-img" src="./images/shop.jpg" alt="">
-	          <ul class="box-items">
-	            <li>SHOP</li>
-							<li>ONLINE</li>
-	          </ul>
 	        </div>
 	        <div class="box">
-	          <img class="box-img" src="./images/tienda.jpeg" alt="">
-	          <ul class="box-items">
-	              <li>NUESTRAS</li>
-								<li>TIENDAS</li>
-	            </ul>
+	          <img class="box-img" src="./images/tienda.jpg" alt="">
 	        </div>
 	        <div class="box">
-	          <img class="box-img" src="./images/blog.jpeg" alt="">
-	          <ul  class="box-items">
-	              <li>BLOG</li>
-	            </ul>
-	        </div>
+	          <img class="box-img" src="./images/blog.jpg" alt="">
 	      </div>
 
 

@@ -90,7 +90,6 @@ p {
 	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: space-around;
-	padding: 0;
 }
 
 .botones-navbar{
@@ -124,19 +123,20 @@ p {
 	font-size: 20px;
 	font-family: "sudden";
 }
-
-.logo-movile{
+/*
+.logo-mobile{
 	display: block;
 }
+
+.logo-mobile img{
+	width: 118px;
+	height: 50px;
+} */
 
 .logo{
 	display: none;
 }
 
-.logo-movile img{
-	width: 118px;
-	height: 50px;
-}
 
 .logo img{
 	width: 118px;
@@ -189,7 +189,7 @@ p {
   justify-content: space-around;
 }
 
-/* ----------------------------------------------------------CATEGORIAS*/
+/* ----------------------------------------------------------NAVBAR*/
 
 .categorias
 {display: none;}
@@ -203,11 +203,12 @@ p {
   width:100%;
 }
 
-.dropdown-menu.show {
-    display: block;
-    width: 100%;
-    text-align: center;
+.dropdown-menu
+{
+	left: unset;
+	right: 0;
 }
+
 
 .contacto{
   margin: 20px auto;
@@ -261,11 +262,9 @@ p {
 	border-radius: 2%;
 }
 
-.box-items li{
+.box-items span{
 	font-size: 50px;
 	font-family: "sudden";
-	margin: 15px;
-
 }
 
 /* -------------------------------------------------------------FOOTER*/
@@ -391,9 +390,9 @@ p {
 		display: block;
 	}
 
-	.logo-movile img{
+	/* .logo-mobile img{
 		display: none;
-	}
+	} */
 
 	.clase{
 		display: flex;

@@ -23,7 +23,7 @@ require_once('funciones.php');
             <!--Cabecera-->
             <header class="main-header">
 
-                <?php require_once('navbar.php'); ?>
+                <?php require_once('navbar2.php'); ?>
 
            <!--Cuerpo principal-->
             <section class="main-section">
