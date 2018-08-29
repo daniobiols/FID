@@ -4,13 +4,17 @@
 function validarProducto($prod_data, $prod_archivo) {
 
 		$prod_nombre = trim($prod_data['prod_nombre']);
-		$prod_descripcion=trim($prod_data['prod_descripcion']);
-		// $prod_talla = trim($_POST['prod_talla']);
+		$prod_codigo =trim($prod_data['prod_codigo']);
+		$prod_genero = trim($prod_data['prod_genero']);
 		$prod_categoria = trim($prod_data['prod_categoria']);
-    $prod_subcategoria = trim($prod_data['prod_subcategoria']);
-    $prod_precio=trim($prod_data['prod_precio']);
-    $prod_precio_lista=trim($prod_data['prod_precio_lista']);
+		$prod_tipo=trim($prod_data['prod_tipo']);
+		$prod_talla = trim($prod_data['prod_talla']);
 		$prod_color= trim($prod_data['prod_color']);
+		$prod_cantidad= trim($prod_data['prod_cantidad']);
+		$prod_precio=trim($prod_data['prod_precio']);
+    $prod_precio_lista=trim($prod_data['prod_precio_lista']);
+		$prod_descripcion=trim($prod_data['prod_descripcion']);
+    // $prod_subcategoria = trim($prod_data['prod_subcategoria']);
     $prod_errores=[];
 
     if ($prod_nombre=='') {
@@ -19,9 +23,9 @@ function validarProducto($prod_data, $prod_archivo) {
     if ($prod_categoria=='') {
         $prod_errores['prod_categoria']="Ingrese Categoria";
     }
-    if ($prod_subcategoria=='') {
-        $prod_errores['prod_subcategoria']="Ingrese sub-categoria";
-    }
+    // if ($prod_cantidad <= 0) {
+    //     $prod_errores['prod_cantidad']="Ingrese cantidad del producto";
+    // }
     if ($prod_precio < 0) {
         $prod_errores['prod_precio']="Ingrese Precio al producto";
     }
@@ -35,27 +39,37 @@ function validarProducto($prod_data, $prod_archivo) {
     //
     return $prod_errores;
 }
-//
-	function guardarProducto($prod_data,$prod_archivo) {
+
+
+	// $nombreImagen=uniqid();
+
+	function guardarProducto($prod_data,$prod_archivo,$nombreImagen) {
     $producto = [
       'prod_id' => traerUltimoProductoID(),
       'prod_nombre' => $prod_data['prod_nombre'],
+			'prod_genero' => $prod_data['prod_genero'],
+			'prod_codigo'=> $prod_data['prod_codigo'],
       'prod_categoria' => $prod_data['prod_categoria'],
-      'prod_subcategoria' => $prod_data['prod_subcategoria'],
+			'prod_tipo'=> $prod_data['prod_tipo'],
+			'prod_talla'=>$prod_data['prod_talla'],
+			'prod_color'=>$prod_data['prod_color'],
+			'prod_destacado'=>$prod_data['prod_destacado']??0 ,
       'prod_precio'=> $prod_data['prod_precio'],
       'prod_precio_lista'=>$prod_data['prod_precio_lista'],
-      'prod_color'=>$prod_data['prod_color'],
-      // 'prod_talla' => $prod_data['prod_talla'],
+      'prod_cantidad' => $prod_data['prod_cantidad'],
       'prod_descripcion' => $prod_data['prod_descripcion'],
-      'prod_foto' => 'images/prod_img/'.$prod_data['prod_nombre'] .'.'.    pathinfo($prod_archivo['prod_foto']['name'], PATHINFO_EXTENSION)
+      'prod_foto' => 'images/prod_img/'.$nombreImagen.'.'.pathinfo($prod_archivo['prod_foto']['name'], PATHINFO_EXTENSION)
     ];
 
     $productoJSON= json_encode($producto);
     file_put_contents('productos.json',$productoJSON.PHP_EOL,FILE_APPEND);
-}
-function guardarProdImagen($laImagen){
-		$errores = [];
+		// return $nombrefoto=$producto['prod_foto'];
 
+}
+function guardarProdImagen($laImagen,$nombreImagen){
+		$prod_errores = [];
+		// var_dump($_FILES);
+// var_dump()
 		if ($_FILES[$laImagen]['error'] == UPLOAD_ERR_OK) {
 			// Capturo el nombre de la imagen, para obtener la extensión
 			$nombreArchivo = $_FILES[$laImagen]['name'];
@@ -63,27 +77,27 @@ function guardarProdImagen($laImagen){
 			$ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
 			// Capturo el archivo temporal
 			$archivoFisico = $_FILES[$laImagen]['tmp_name'];
-
+			var_dump($_FILES);
 			// Pregunto si la extensión es la deseada
-			// if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {
+			if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {
 				// Armo la ruta donde queda gurdada la imagen
 				$dondeEstoyParado = dirname(__FILE__);
 
-				$rutaFinalConNombre = $dondeEstoyParado . '/img/prod_img' . $_POST['prod_nombre'] . '.' . $ext;
+				$rutaFinalConNombre = $dondeEstoyParado . '/images/prod_img/' .$nombreImagen. '.' . $ext;
 
 				// Subo la imagen definitivamente
 				move_uploaded_file($archivoFisico, $rutaFinalConNombre);
-		// 	} else {
-		// 		$errores['imagen'] = 'El formato tiene que ser JPG, JPEG, PNG o GIF';
-		// 	}
-		// } else {
-		// 	// Genero error si no se puede subir
-		// 	$errores['imagen'] = 'No subiste nada';
-		// }
+			} else {
+				$prod_errores['imagen'] = 'El formato tiene que ser JPG, JPEG, PNG o GIF';
+			}
+		} else {
+			// Genero error si no se puede subir
+			$prod_errores['prod_img'] = 'No subiste nada';
+		}
 
-		return $errores;
+		return $prod_errores;
 	}
-}
+
 
 
 

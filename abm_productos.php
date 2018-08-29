@@ -1,34 +1,48 @@
-    <?php
+     <?php
       require_once('prod_funciones.php');
-      // $prod_name='';
+      $ay_genero=['Hombre','Mujer','Niñe'];
+      $ay_categoria=['Indumentaria','Calzado','Accesorio'];
+      // $ay_subcategorias=[];
+      $ay_tipoproducto=['Zapatillas','Zapatos','Botas','Borcegos','Remeras','Pantalones','Shorts','Buzos','Camperas','Bolsos','Mochilas','Medias'];
+      $ay_tallas=['XS','S','M','L','XL','XXL','XXXL',26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46];
+
+      // $ay_tallas=[
+      //         'Calzado'=>[26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45],
+      //         'Indumentaria'=>[
+      //             'Pantalones'=>[26,28,30,32,34,36,38,40,42,44,46,48],
+      //             'Otros'=>['XS','S','M','L','XL','XXL','XXXL']
+      //   ]
+      // ];
       $prod_errores=[];
 
        if($_POST){
-//          var_dump($_POST );
-// //         if(isset($_POST['prod_submit'])){
+
           $prod_nombre = trim($_POST['prod_nombre']);
-      		$prod_descripcion=trim($_POST['prod_descripcion']);
-      		// $prod_talla = trim($_POST['prod_talla']);
+          $prod_codigo=trim($_POST['prod_codigo']);
+          $prod_genero=trim($_POST['prod_genero']);
       		$prod_categoria = trim($_POST['prod_categoria']);
-          $prod_subcategoria= trim($_POST['prod_subcategoria']);
+          // $prod_cantidad = trim($_POST['prod_cantidad']);
+      		// $prod_talla = trim($_POST['prod_talla']);
+
+          // $prod_subcategoria= trim($_POST['prod_subcategoria']);
           $prod_precio=trim($_POST['prod_precio']);
           $prod_precio_lista=trim($_POST['prod_precio_lista']);
-      		$prod_color= trim($_POST['prod_color']);
+      		// $prod_color= trim($_POST['prod_color']);
+          $prod_descripcion=trim($_POST['prod_descripcion']);
 
           $prod_errores=validarProducto($_POST,$_FILES);
           if (empty($prod_errores)) {
 
     				if (count($prod_errores) == 0) {
-    					guardarProducto($_POST,$_FILES);
+              $nombreImagen=uniqid();
+      				guardarProducto($_POST,$_FILES,$nombreImagen) ;
+              guardarProdImagen('prod_foto',$nombreImagen);
+              //guardarProducto($_POST,$_FILES,$nombreImagen);
 
-    					// header('location:registrado.php');
-    					// exit;
+
     				}
     			}
-
        }
-
-
      ?>
 
     <!DOCTYPE html>
@@ -50,92 +64,154 @@
          </header>
 
         <div class="data_form">
-          <h2 class="text-center">Alta de productos</h2>
-    		   <form  method="post" enctype="multipart/form-data">
-                    <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="prod_nombre">Nombre de producto:</label>
-                                    <input class="form-control" type="text" name="prod_nombre" value="">
-                                    <span>
-                                      <?= ($prod_errores['prod_nombre'])??''?>
-                                    </span>
+          <h2 class="text-center ">Alta de productos</h2>
+    		    <form  method="post" enctype="multipart/form-data">
+              <div class="row">
+                 <div class="col-sm-6">
+                   <div class="form-group ">
+                     <label class="control-label">Nombre de Producto:</label>
+                     <input type="text" class="form-control" name="prod_nombre" value="<?=$prod_nombre?>">
+                     <span><?= ($prod_errores['prod_nombre'])??''?></span>
+                   </div>
+                 </div>
+                 <div class="col-sm-6">
+                   <div class="form-group ">
+                     <label class="control-label">Codigo de Producto:</label>
+                     <input type="text" class="form-control" name="prod_codigo" value="<?=$prod_codigo?>">
+                     <span><?= ($prod_codigo['prod_codigo'])??''?></span>
+                   </div>
+                 </div>
+              </div>
+              <div class="row">
+                 <div class="col-sm-6">
+                   <div class="form-group ">
+                     <label class="control-label">Genero :</label>
+                     <select class="form-control" class="" name="prod_genero">
+                      <option value="">Elegir genero :</option>
+                        <?php foreach ($ay_genero  as $genero): ?>
+                            <?php if ($genero == $genero ): ?>
+                                <option selected value="<?=$genero?>"><?=$genero?></option>
+                            <?php else: ?>
+                                <option value="<?=$genero?>"><?=$genero?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                      </select>
+                     <span><?= ($prod_errores['prod_genero'])??''?></span>
+                   </div>
+                 </div>
+                 <div class="col-sm-6">
+                   <div class="form-group ">
+                     <label class="control-label">Categoria :</label>
+                     <select class="form-control" class="" name="prod_categoria">
+                      <option value="">Elegir Categoria :</option>
+                        <?php foreach ($ay_categoria  as  $categoria): ?>
+                            <?php if ($categoria == $categoria ): ?>
+                                <option selected value="<?=$categoria?>"><?=$categoria?></option>
+                            <?php else: ?>$categoria
+                                <option value="<?=$categoria?>"><?=$categoria?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                      </select>
+                     <span><?= ($prod_errores['prod_categoria'])??''?></span>
+                   </div>
+                 </div>
+              </div>
+              <div class="row">
+                 <div class="col-sm-6">
+                   <div class="form-group ">
+                     <label class="control-label">Tipo de Producto :</label>
+                     <select class="form-control" class="" name="prod_tipo">
+                      <option value="">Elegir tipo de Producto :</option>
+                        <?php foreach ($ay_tipoproducto  as $tipoproducto): ?>
+                            <?php if ($tipoproducto == $tipoproducto ): ?>
+                                <option selected value="<?=$tipoproducto?>"><?=$tipoproducto?></option>
+                            <?php else: ?>
+                                <option value="<?=$tipoproducto?>"><?=$tipoproducto?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                      </select>
+                     <span><?= ($prod_errores['prod_tipo'])??''?></span>
+                   </div>
+                 </div>
+                 <div class="col-sm-6">
+                   <div class="form-group ">
+                     <label class="control-label">Talla :</label>
+                     <select class="form-control" class="" name="prod_talla">
+                      <option value="">Elegir Talla :</option>
+                        <?php foreach ($ay_tallas  as $talla ): ?>
+                            <?php if ($talla == $talla ): ?>
+                                <option selected value="<?=$talla?>"><?=$talla?></option>
+                            <?php else: ?>
+                                <option value="<?=$talla?>"><?=$talla?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                      </select>
+                     <span><?= ($prod_errores['prod_talla'])??''?></span>
+                   </div>
+                 </div>
+              </div>
+              <div class="row">
+                 <div class="col-sm-6">
+                     <div class="form-group ">
+                       <label class="control-label">Color:</label>
+                       <input type="text" class="form-control" name="prod_color" value="">
+                       <span><?= ($prod_errores['prod_color'])??''?></span>
+                     </div>
+                  </div>
 
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="prod_categoria">Categoria</label>
-                                  <select class="" name="prod_categoria">
-                                    <option value=""></option>
-                                    <option value="hombre">Hombre</option>
-                                    <option value="nino">Niño</option>
-                                    <option value="mujer">Mujer</option>
-                                  </select>
-                                  <span>
-                                    <?= ($prod_errores['prod_categoria'])??''?>
-                                  </span>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="prod_subcategoria">Subcategoria :</label>
-                                    <input class="form-control" type="text" name="prod_subcategoria" value="">
-                                    <span>
-                                      <?= ($prod_errores['prod_subcategoria'])??'' ?>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="prod_color"> Color:</label>
-                                    <input class="form-control" type="text" name="prod_color" value="">
-                                    <span>
-                                      <?= ($prod_errores['prod_color'])??''  ?>
-                                    </span>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="prod_precio">Precio :</label>
-                                    <input class="form-control" type="number" name="prod_precio" value="">
-                                    <span>
-                                      <?= ($prod_errores['prod_precio'])??''?>
-                                    </span>
+                 <div class="col-sm-3">
+                   <div class="form-group ">
+                     <div class="">
+                       <label class="control-label">Es Destacado :</label>
+                       <input type="checkbox" class="form-control checkbox" name="prod_destacado" >
 
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="prod_precio_lista"> Precio de Lista:</label>
-                                    <input class="form-control" type="number" name="prod_precio_lista" value="">
-                                    <span>
-                                      <?= ($prod_errores['prod_precio_lista'])??''?>
-                                    </span>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="prod_descripcion">Descripcion</label>
-                                    <textarea name="prod_descripcion" rows="8" cols="80"></textarea>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-sm-3">
+                   <div class="form-group ">
+                     <div class="">
+                       <label for="prod_cantidad" class="control-label">Cantidad :</label>
+                       <input type="number" class="form-control checkbox" name="prod_cantidad" >
+                       <span><?= ($prod_errores['prod_cantidad'])??''?></span>
+                     </div>
+                   </div>
+                 </div>
+              </div>
+              <div class="row">
+                 <div class="col-sm-6">
+                     <div class="form-group ">
+                       <label class="control-label">Precio:</label>
+                       <input type="number" class="form-control" name="prod_precio" value="<?=$prod_precio?>">
+                       <span><?= ($prod_errores['prod_precio'])??''?></span>
+                     </div>
+                  </div>
 
-                                </div>
-                            </div>
+                 <div class="col-sm-6">
+                   <div class="form-group ">
+                     <label class="control-label">Precio Lista:</label>
+                     <input type="number" class="form-control" name="prod_precio_lista" value="<?=$prod_precio_lista?>">
+                     <span><?= ($prod_errores['prod_precio_lista'])??''?></span>
+                   </div>
+                 </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="prod_descripcion">Descripcion</label>
+                        <textarea name="prod_descripcion" rows="3" cols="40"></textarea>
+                        <span><?= ($prod_errores['prod_descripcion'])??''?></span>
                     </div>
-                    <div class="col-xs-6">
-                                <div class="form-group ">
-                                    <label for="prod_foto" class="control-label">Subir imagenes:</label>
-                                    <input class="form-control" type="file" name="prod_foto" >
-                                </div>
-                    </div>
-                    <button class="text-center" type="submit" name="prod_submit">Cargar producto</button>
-              </form>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group ">
+                      <label for="prod_foto" class="control-label">Subir imagenes:</label>
+                      <input class="form-control" type="file" name="prod_foto" >
+                  </div>
+                </div>
+              </div>
+              <button class="text-center btn btn-primary" type="submit" name="prod_submit">Cargar producto</button>
+            </form>
     	    </div>
         </div>
 
