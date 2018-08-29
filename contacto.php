@@ -3,21 +3,36 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-">
-		<title>FID-COMMERCE</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/styles.css">
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
-        <!--link href="https://unpkg.com/ionicons@4.2.4/dist/css/ionicons.min.css" rel="stylesheet"-->
+
+		<title>FID</title>
+
+		<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="css/styles.css">
+
+		<!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+
+		<!-- Icono TAB -->
+		<link rel="shortcut icon" href="images/icono.ico">
 	</head>
+
 	<body>
         <!--Contenedor-->
-        <div class="container-fluid contenedor">
-            <!--Cabecera-->
-            <?php require_once('navbar.php'); ?>
+    <div class="container-fluid contenedor">
+      <!--Cabecera-->
+      <header class="main-header">
+
+        <!--Menu navbar-->
+				<?php require_once('navbar2.php'); ?>
 
             <!--Cuerpo principal-->
             <div class="contacto">
