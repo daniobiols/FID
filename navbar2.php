@@ -52,7 +52,7 @@
           <img src="images/usuarioLog.png" alt="">
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item fuente" href="#">Mi cuenta</a>
+          <a class="dropdown-item fuente" href="perfil_usuario.php">Mi cuenta</a>
           <br>
           <a class="dropdown-item fuente" href="#">Administrador</a>
           <br>
@@ -84,7 +84,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
 
         <!--Boton INICIAR SESION-->
-        <button type="button" class="icono-banner btn btn-light" data-toggle="modal" data-target="#loginModal" data-whatever="@getbootstrap"><img src="images/login.png" alt=""></button>
+        <button type="button" class="icono-banner btn btn-light" data-toggle="modal" data-target="#loginModal" data-whatever="@getbootstrap"><img src="images/login.png" alt="Login"></button>
         <div class="modal fade" id="loginModal" tabindex="-1" role="modal" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -128,7 +128,7 @@
           </div>
         </div>
         <!--Boton REGISTRARSE-->
-        <button type="button" class="icono-banner btn btn-light" data-toggle="modal" data-target="#registroModal" data-whatever="@getbootstrap"><img src="images/register.png" alt=""></button>
+        <button type="button" class="icono-banner btn btn-light" data-toggle="modal" data-target="#registroModal" data-whatever="@getbootstrap"><img src="images/register.png" alt="Register"></button>
         <div class="modal fade show" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">

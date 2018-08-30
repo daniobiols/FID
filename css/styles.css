@@ -376,6 +376,20 @@ p {
 	margin: 20px;
 }
 
+/* ------------------------------------------------DATOS DEL USUARIO*/
+
+.formulario_usuario{
+  background-color:#fff;
+  padding: 10px;
+}
+
+.fuente_formulario_usuario{
+  margin: 15px 0;
+	font-size: 20px;
+	font-family: "sudden";
+
+}
+
 
 /*------------------------------------------------------
 ========================MEDIA===========================
