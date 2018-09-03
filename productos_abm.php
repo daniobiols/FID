@@ -106,7 +106,7 @@
                         <?php foreach ($ay_categoria  as  $categoria): ?>
                             <?php if ($categoria == $categoria ): ?>
                                 <option selected value="<?=$categoria?>"><?=$categoria?></option>
-                            <?php else: ?>$categoria
+                            <?php else: ?>
                                 <option value="<?=$categoria?>"><?=$categoria?></option>
                             <?php endif; ?>
                         <?php endforeach; ?>
@@ -181,7 +181,7 @@
                  <div class="col-sm-6">
                      <div class="form-group ">
                        <label class="control-label">Precio:</label>
-                       <input type="number" class="form-control" name="prod_precio" value="<?=$prod_precio?>">
+                       <input type="number" class="form-control" name="prod_precio" >
                        <span><?= ($prod_errores['prod_precio'])??''?></span>
                      </div>
                   </div>
@@ -189,7 +189,7 @@
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Precio Lista:</label>
-                     <input type="number" class="form-control" name="prod_precio_lista" value="<?=$prod_precio_lista?>">
+                     <input type="number" class="form-control" name="prod_precio_lista" >
                      <span><?= ($prod_errores['prod_precio_lista'])??''?></span>
                    </div>
                  </div>
