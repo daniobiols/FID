@@ -22,11 +22,26 @@ require_once('funciones.php');
         <div class="container-fluid contenedor">
             <!--Cabecera-->
             <header class="main-header">
-                <?php require_once('navbar.php'); ?>
-						</header>
+
+                <?php require_once('navbar2.php'); ?>
 
            <!--Cuerpo principal-->
             <section class="main-section">
+                <!-- <h2>Listado de Productos</h2>
+                <hr style="color: #0054b2;"/> -->
+								<!--
+								<nav aria-label="breadcrumb">
+								  <ol class="breadcrumb">
+								    <li class="breadcrumb-item active" aria-current="page">Coleccion</li>
+								  </ol>
+								</nav>
+
+								<nav aria-label="breadcrumb">
+								  <ol class="breadcrumb">
+								    <li class="breadcrumb-item"><a href="#">Coleccion</a></li>
+								    <li class="breadcrumb-item active" aria-current="page">Hombre</li>
+								  </ol>
+								</nav> -->
 
 								<nav aria-label="breadcrumb">
 								  <ol class="breadcrumb">
@@ -35,8 +50,6 @@ require_once('funciones.php');
 								    <li class="breadcrumb-item active" aria-current="page">Indumentaria</li>
 								  </ol>
 								</nav>
-
-
                 <article id="mujer">
                     <!-- <h2>Mujer</h2> -->
                     <div class="row articulos">
@@ -239,6 +252,49 @@ require_once('funciones.php');
              <!--Pie de pagina-->
 						 <?php require_once("footer.php") ?>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha34-qi/X+945DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+abtTE1Pi4jizo" crossorigin="anonymous"></script>

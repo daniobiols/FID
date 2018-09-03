@@ -39,8 +39,6 @@ function validarProducto($prod_data, $prod_archivo) {
     //
     return $prod_errores;
 }
-
-
 	// $nombreImagen=uniqid();
 
 	function guardarProducto($prod_data,$prod_archivo,$nombreImagen) {
@@ -77,7 +75,7 @@ function guardarProdImagen($laImagen,$nombreImagen){
 			$ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
 			// Capturo el archivo temporal
 			$archivoFisico = $_FILES[$laImagen]['tmp_name'];
-			var_dump($_FILES);
+			// var_dump($_FILES);
 			// Pregunto si la extensión es la deseada
 			if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {
 				// Armo la ruta donde queda gurdada la imagen
@@ -97,10 +95,6 @@ function guardarProdImagen($laImagen,$nombreImagen){
 
 		return $prod_errores;
 	}
-
-
-
-
     // guardarProducto($_POST);
     // file_put_contents('productos.json',$productoJSON.PHP_EOL,FILE_APPEND);
   //
@@ -118,7 +112,15 @@ function guardarProdImagen($laImagen,$nombreImagen){
 
         return $arrayProductsPHP;
     }
-  //
+  function traerPorProductID($prod_id){
+	      $productos = traerTodosProductos();
+	      foreach ($productos as $producto) {
+	          if ($producto['prod_id'] == $prod_id) {
+	              return $producto;
+	          }
+	      }
+	      return false;
+	  }
   //
   function traerUltimoProductoID(){
       $todos = traerTodosProductos();

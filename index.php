@@ -137,13 +137,13 @@ if ($_POST){
 				<!---ACCESOS----->
 	      <div class="container-boxes">
 	        <div class="box">
-	          <img class="box-img" src="./images/shop.jpg" alt="">
+	          <a href="productos.php"><img class="box-img" src="./images/shop.jpg" alt=""> </a>
 	        </div>
 	        <div class="box">
-	          <img class="box-img" src="./images/tienda.jpg" alt="">
+	          <a href="productos.php"><img class="box-img" src="./images/tienda.jpg" alt=""></a>
 	        </div>
 	        <div class="box">
-	          <img class="box-img" src="./images/blog.jpg" alt="">
+	          <a href="preguntas_frecuentes.php"><img class="box-img" src="./images/blog.jpg" alt=""></a> 
 	      </div>
 
 
@@ -178,7 +178,6 @@ if ($_POST){
                 </div>
             </div>
         </div> -->
-
       <hr style="color: #0054b2;" />
 
 			<!--Pie de pagina-->

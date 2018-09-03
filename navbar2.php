@@ -54,7 +54,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item fuente" href="perfil_usuario.php">Mi cuenta</a>
           <br>
-          <a class="dropdown-item fuente" href="#">Administrador</a>
+          <a class="dropdown-item fuente" href="productos_abm.php">Administrador</a>
           <br>
           <a class="dropdown-item fuente" href="#">Mis compras</a>
           <br>
