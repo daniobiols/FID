@@ -29,13 +29,13 @@
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Nombre de Producto:</label>
-                     <input type="text" class="form-control" value=<?=$producto['prod_nombre']  ?>>
+                     <input type="text" class="form-control" value=<?=$producto['prod_nombre']  ?> readonly>
                    </div>
                  </div>
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Codigo de Producto:</label>
-                     <input type="text" class="form-control" value=<?= $producto['prod_codigo']  ?> >
+                     <input type="text" class="form-control" value=<?= $producto['prod_codigo']  ?> readonly>
                    </div>
                  </div>
               </div>
@@ -43,13 +43,13 @@
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Genero :</label>
-                     <input type="text" class="form-control" value=<?= $producto['prod_genero']  ?>>
+                     <input type="text" class="form-control" value=<?= $producto['prod_genero']  ?> readonly>
                    </div>
                  </div>
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Categoria:</label>
-                     <input type="text" class="form-control" value=<?= $producto['prod_categoria']  ?> >
+                     <input type="text" class="form-control" value=<?= $producto['prod_categoria']  ?> readonly>
                    </div>
                  </div>
               </div>
@@ -57,13 +57,13 @@
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Tipo de Producto :</label>
-                     <input type="text" class="form-control" value=<?=$producto['prod_tipo']  ?>>
+                     <input type="text" class="form-control" value=<?=$producto['prod_tipo']  ?> readonly>
                    </div>
                  </div>
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Talla :</label>
-                     <input type="text" class="form-control" value=<?= $producto['prod_talla']  ?> >
+                     <input type="text" class="form-control" value=<?= $producto['prod_talla'] ?> readonly>
                    </div>
                  </div>
               </div>
@@ -71,14 +71,14 @@
                  <div class="col-sm-6">
                      <div class="form-group ">
                        <label class="control-label">Color:</label>
-                       <input type="text" class="form-control" name="prod_color" value=<?= $producto['prod_color'] ?>>
+                       <input type="text" class="form-control" name="prod_color" value=<?= $producto['prod_color'] ?> readonly>
                      </div>
                   </div>
                  <div class="col-sm-3">
                    <div class="form-group ">
                      <div class="">
                        <label class="control-label">Es Destacado :</label>
-                       <input type="checkbox" class="form-control checkbox" value=<?= $producto["prod_destacado"] ?> >
+                       <input type="checkbox" class="form-control checkbox" value=<?= $producto["prod_destacado"] ?> readonly>
                      </div>
                    </div>
                  </div>
@@ -86,7 +86,7 @@
                    <div class="form-group ">
                      <div class="">
                        <label for="prod_cantidad" class="control-label">Cantidad :</label>
-                       <input type="number" class="form-control checkbox" value=<?= $producto["prod_cantidad"] ?> >
+                       <input type="number" class="form-control checkbox" value=<?= $producto["prod_cantidad"] ?> readonly>
                      </div>
                    </div>
                  </div>
@@ -95,14 +95,14 @@
                  <div class="col-sm-6">
                      <div class="form-group ">
                        <label class="control-label">Precio:</label>
-                       <input type="number" class="form-control" name="prod_precio" value="<?=$producto['prod_precio']?>">
+                       <input type="number" class="form-control" name="prod_precio" value="<?=$producto['prod_precio']?>" readonly>
                      </div>
                   </div>
 
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Precio Lista:</label>
-                     <input type="number" class="form-control" name="prod_precio_lista" value="<?=$producto['prod_precio_lista']?>">
+                     <input type="number" class="form-control" name="prod_precio_lista" value="<?=$producto['prod_precio_lista']?>" readonly>
                    </div>
                  </div>
               </div>
@@ -110,7 +110,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="prod_descripcion">Descripcion</label>
-                        <textarea name="prod_descripcion" rows="3" cols="40"><?= $producto['prod_descripcion'] ?></textarea>
+                        <textarea  name="prod_descripcion" rows="3" cols="40"  ><?= $producto['prod_descripcion'] ?>  </textarea >
 
                     </div>
                 </div>
