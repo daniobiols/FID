@@ -79,7 +79,6 @@ if ($_POST){
     <div class="container-fluid contenedor">
       <!--Cabecera-->
       <header class="main-header">
-
         <!--Menu navbar-->
 				<?php require_once('navbar2.php'); ?>
 
@@ -128,12 +127,10 @@ if ($_POST){
                   </a>
               </div>
           </section>
-
-      </header>
+				</header>
 
       <!--Cuerpo principal-->
       <section class="main-section">
-
 				<!---ACCESOS----->
 	      <div class="container-boxes">
 	        <div class="box">
@@ -143,52 +140,16 @@ if ($_POST){
 	          <a href="productos.php"><img class="box-img" src="./images/tienda.jpg" alt=""></a>
 	        </div>
 	        <div class="box">
-	          <a href="preguntas_frecuentes.php"><img class="box-img" src="./images/blog.jpg" alt=""></a> 
-	      </div>
+	          <a href="preguntas_frecuentes.php"><img class="box-img" src="./images/blog.jpg" alt=""></a>
+	      	</div>
+				</div>
+		</section>
 
+		<!--Pie de pagina-->
+		<?php require_once("footer.php") ?>
 
-			<!-- Productos slider-->
+	</div>
 
-
-        <!--Categorias-->
-        <!-- <div class="categorias">
-            <h2 id="id_categorias">Categorias</h2>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mujer</button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button"><a href="productos.php#mujer">Camisas</a></button>
-                    <button class="dropdown-item" type="button"><a href="productos.php#mujer">Accesorios</a></button>
-                    <button class="dropdown-item" type="button"><a href="productos.php#mujer">Camperas</a></button>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hombre</button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button"><a href="productos.php#hombre">Camperas</a></button>
-                    <button class="dropdown-item" type="button"><a href="productos.php#hombre">Camisas</a></button>
-                    <button class="dropdown-item" type="button"><a href="productos.php#hombre">Accesorios</a></button>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Niño</button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button"><a href="productos.php#ninos">Camperas</a></button>
-                    <button class="dropdown-item" type="button"><a href="productos.php#ninos">Camisas</a></button>
-                    <button class="dropdown-item" type="button"><a href="productos.php#ninos">Accesorios</a></button>
-                </div>
-            </div>
-        </div> -->
-      <hr style="color: #0054b2;" />
-
-			<!--Pie de pagina-->
-  		<?php require_once("footer.php") ?>
-
-    </div>
-
-		<!-- Required JavaScript Libraries -->
-		<!-- <script src="../js/customjs"></script> -->
-		<!-- Optional JavaScript -->
-	 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

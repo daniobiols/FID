@@ -1,7 +1,3 @@
-<!-- <div class=" clase logo-mobile col-lg-2 col-md-2 col-sm-5 col-xs-4">
-  <a href="index.php"><img src="images/LOGO.png" alt=""></a>
-</div> -->
-
 <nav class=" clase row nav-color navbar navbar-expand-lg navbar-light bg-light">
   <!--Logo-->
   <div class="logo col-lg-2 col-md-2 col-sm-5 col-xs-4">
@@ -22,10 +18,10 @@
             <a class="nav-link fuente" href="productos.php">SHOP ONLINE</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fuente" href="preguntas_frecuentes.php">TIENDAS</a>
+            <a class="nav-link fuente" href="tiendas.php">TIENDAS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fuente" href="preguntas_frecuentes.php">BLOG</a>
+            <a class="nav-link fuente" href="blog.php">BLOG</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fuente" href="preguntas_frecuentes.php">PREGUNTAS FRECUENTES</a>
