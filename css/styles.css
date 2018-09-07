@@ -269,6 +269,13 @@ p {
 
 /* -------------------------------------------------------------FOOTER*/
 
+.main-header{
+  margin-top: 10px;
+  width: 100%;
+  background-color: transparent;
+  text-align: center;
+}
+
 .pie_pagina{
 	width: 100%;
 	background-color : rgba(22, 24, 34, 0.7);
