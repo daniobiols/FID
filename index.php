@@ -1,11 +1,13 @@
 <?php
 
 require_once('funciones.php');
+require_once('classes/Usuarios.php');
 
-$name = '';
+// $name = '';
+// $pass = '';
+// $rpass = '';
+
 $email = '';
-$pass = '';
-$rpass = '';
 $errores = [];
 
 if ($_POST){
@@ -15,18 +17,12 @@ if ($_POST){
 		$pass = trim($_POST['passReg']);
 		$rpass = trim($_POST['rpassReg']);
 
-		// echo "<pre>";
-		// var_dump($_POST);
-
 		$errores = validar($_POST);
 
 		if (empty($errores)) {
 
 			if (count($errores) == 0) {
 				guardarUsuario($_POST);
-
-				// header('location:registrado.php');
-				// exit;
 			}
 		}
 	}

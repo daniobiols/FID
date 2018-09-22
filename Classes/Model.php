@@ -1,8 +1,5 @@
 <?php
 
-/**
- *
- */
 abstract class Model
 {
 
@@ -13,9 +10,17 @@ abstract class Model
     // code...
   }
 
-  public function save()
+  public function save($data, $table)
   {
+    $sql = "INSERT INTO $table()";
+    foreach ($data as $colum => $value) {
+      $sql .= "$colum, ";
+    }
+    $sql .= ") VALUES (";
 
+    foreach ($data as $colum => $value) {
+      $sql .= "$colum, ";
+    }
   }
 
   public function delete()
@@ -25,7 +30,7 @@ abstract class Model
 
   public function modificar()
   {
-    
+
   }
 
 }

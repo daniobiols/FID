@@ -1,17 +1,18 @@
 <?php
 
-class Usuarios
+class User
 {
   protected $id;
   protected $nombre;
+  protected $apellido;
   protected $email;
   protected $password;
 
 
-  function __construct($nombre, $email, $password)
+  function __construct($nombre, $apellido, $email, $password)
   {
-    $this->id = $id;
     $this->nombre = $nombre;
+    $this->apellido = $apellido;
     $this->password =$password;
     $this->email = $email;
   }
@@ -19,11 +20,6 @@ class Usuarios
   public function getId()
   {
       return $this->id;
-  }
-
-  public function setId($id)
-  {
-      $this->id = $id;
   }
 
   public function getEmail()

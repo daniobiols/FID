@@ -1,11 +1,10 @@
 <?php
+
 /**
  *
  */
-class Categorias
+class Category
 {
-
-  protected $categoria;
 
   function __construct(argument)
   {
