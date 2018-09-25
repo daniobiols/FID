@@ -1,5 +1,5 @@
 <!--Pie de pagina-->
-<footer class="main-footer">
+<div class="main-footer">
   <div class="footer-smedia-bc">
     <ul class=" footer-smedia">
       <li><img class="footer-img"src="./images/Facebook.png" alt=""></li>
@@ -45,8 +45,8 @@
         <li>0800-222-3344</li>
       </ul>
     </div>
-    </footer>
-    <div class="copyright">
-      <p>Copyright @ DIF 2018</p>
+  </footer>
+  <div class="copyright">
+    <p>Copyright @ DIF 2018</p>
   </div>
-</footer>
+</div>

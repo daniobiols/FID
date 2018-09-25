@@ -110,7 +110,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="prod_descripcion">Descripcion</label>
-                        <textarea  name="prod_descripcion" rows="3" cols="40"  ><?= $producto['prod_descripcion'] ?>  </textarea >
+                        <textarea  readonly="true" name="prod_descripcion" rows="3" cols="40"  ><?= $producto['prod_descripcion'] ?>  </textarea >
 
                     </div>
                 </div>

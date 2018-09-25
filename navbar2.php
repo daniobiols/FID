@@ -18,10 +18,10 @@
             <a class="nav-link fuente" href="productos.php">SHOP ONLINE</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fuente" href="tiendas.php">TIENDAS</a>
+            <a class="nav-link fuente" href="">TIENDAS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fuente" href="blog.php">BLOG</a>
+            <a class="nav-link fuente" href="">BLOG</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fuente" href="preguntas_frecuentes.php">PREGUNTAS FRECUENTES</a>
