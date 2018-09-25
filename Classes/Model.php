@@ -1,37 +1,44 @@
 <?php
 
+require_once ('classes/DBJSON.php');
+
 abstract class Model
 {
-
+  public $table;
+  public $columns;
+  public $datos;
   protected $db;
 
-  function __construct(argument)
+  public function __construct($datos=[])
   {
-    // code...
+    $this->datos = $datos;
+    $this->db = new DBJSON();
+    // $this->db = new DBMySQL();
   }
 
-  public function save($data, $table)
+  public function save()
   {
-    $sql = "INSERT INTO $table()";
-    foreach ($data as $colum => $value) {
-      $sql .= "$colum, ";
-    }
-    $sql .= ") VALUES (";
-
-    foreach ($data as $colum => $value) {
-      $sql .= "$colum, ";
-    }
+    // if (!$this->getAttr('email')) {
+      $this->insert();
+    // } else {
+    //   $this->update();
+    // }
   }
 
-  public function delete()
+  private function insert()
   {
-
+    $this->db->insert($this->datos, $this);
   }
 
-  public function modificar()
+  public function getAttr($attr)
   {
-
+    return isset($this->datos[$attr]) ? $this->datos[$attr] : null;
   }
+
+  public function setAttr($attr, $value)
+  {
+    $this->datos[$attr] = $value;
+  }
+
 
 }
- ?>

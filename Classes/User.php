@@ -1,21 +1,9 @@
 <?php
 
-class User
+class User extends Model
 {
-  protected $id;
-  protected $nombre;
-  protected $apellido;
-  protected $email;
-  protected $password;
-
-
-  function __construct($nombre, $apellido, $email, $password)
-  {
-    $this->nombre = $nombre;
-    $this->apellido = $apellido;
-    $this->password =$password;
-    $this->email = $email;
-  }
+  public $table = 'User';
+  public $columns = ['nombre', 'email', 'password'];
 
   public function getId()
   {

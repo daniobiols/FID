@@ -1,9 +1,11 @@
 <?php
 
 require_once('funciones.php');
-require_once('classes/Usuarios.php');
+require_once('classes/Model.php');
+require_once('classes/User.php');
 
-// $name = '';
+
+$name = '';
 // $pass = '';
 // $rpass = '';
 
@@ -22,7 +24,8 @@ if ($_POST){
 		if (empty($errores)) {
 
 			if (count($errores) == 0) {
-				guardarUsuario($_POST);
+				$usuario = new User (['name'=>$name,	 'email'=>$email, 'password'=>$pass]);
+				$usuario->save();
 			}
 		}
 	}
