@@ -11,6 +11,10 @@ abstract class Model
 
   public function __construct($datos=[])
   {
+    // echo "Model - Datos tiene: ";
+		// echo "<br>";
+    // var_dump($datos);
+
     $this->datos = $datos;
     $this->db = new DBJSON();
     // $this->db = new DBMySQL();

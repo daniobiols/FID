@@ -70,16 +70,16 @@ function traerEmail($email){
       return false;
   }
 
-function traerUltimoID(){
-    $todos = traerTodos();
-    if (count($todos) == 0) {
-      return 1;
-    }
-    $ultimo = array_pop($todos);
-    $ultimoID = $ultimo['id'];
-
-    return $ultimoID +1;
-  }
+// function traerUltimoID(){
+//     $todos = traerTodos();
+//     if (count($todos) == 0) {
+//       return 1;
+//     }
+//     $ultimo = array_pop($todos);
+//     $ultimoID = $ultimo['id'];
+//
+//     return $ultimoID +1;
+//   }
 
 function traerPorID($id){
       $usuarios = traerTodos();
@@ -92,28 +92,28 @@ function traerPorID($id){
       return false;
   }
 
-function validarLogin($data){
-  $email = trim($data['emailLog']);
-  $pass = trim($data['passLog']);
-  $errores = [];
-
-  if ($email == '') {
-    $errores['emailLog']  = 'Ingresa tu email';
-  }elseif (!filter_var($email,FILTER_VALIDATE_EMAIL)) {
-    $errores['emailLog']  = 'Por favor compelta tu email con un formato valido';
-  }elseif (!$usuario = traerEmail($email)) {
-    $errores['emailLog']  = 'El usuario no existe. Crear una cuenta';
-  }
-
-  if ($pass == '') {
-    $errores['passReg'] = $errores['passLog'];
-    $errores['passLog']  = 'Ingresa una contraseña valida';
-  }elseif (!password_verify($pass, $usuario['passReg'])) {
-    $errores['passLog']  = 'Contraseña no valida';
-  }
-
-  return $errores;
-  }
+// function validarLogin($data){
+//   $email = trim($data['emailLog']);
+//   $pass = trim($data['passLog']);
+//   $errores = [];
+//
+//   if ($email == '') {
+//     $errores['emailLog']  = 'Ingresa tu email';
+//   }elseif (!filter_var($email,FILTER_VALIDATE_EMAIL)) {
+//     $errores['emailLog']  = 'Por favor compelta tu email con un formato valido';
+//   }elseif (!$usuario = traerEmail($email)) {
+//     $errores['emailLog']  = 'El usuario no existe. Crear una cuenta';
+//   }
+//
+//   if ($pass == '') {
+//     $errores['passReg'] = $errores['passLog'];
+//     $errores['passLog']  = 'Ingresa una contraseña valida';
+//   }elseif (!password_verify($pass, $usuario['passReg'])) {
+//     $errores['passLog']  = 'Contraseña no valida';
+//   }
+//
+//   return $errores;
+//   }
 
 function existeMail($email){
   $todos = traerTodos();
