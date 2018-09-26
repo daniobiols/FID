@@ -16,14 +16,14 @@ abstract class Model
     // var_dump($datos);
 
     $this->datos = $datos;
-    $this->db = new DBJSON();
-    // $this->db = new DBMySQL();
+    // $this->db = new DBJSON();
+    $this->db = new DBMySQL();
   }
 
   public function save()
   {
     // if (!$this->getAttr('email')) {
-      $this->insert();
+    $this->insert();
     // } else {
     //   $this->update();
     // }
@@ -43,6 +43,5 @@ abstract class Model
   {
     $this->datos[$attr] = $value;
   }
-
 
 }

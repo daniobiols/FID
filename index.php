@@ -2,6 +2,7 @@
 
 require_once('funciones.php');
 require_once('classes/DBJSON.php');
+require_once('classes/DBMySQL.php');
 require_once('classes/user.php');
 
 $name = '';
@@ -17,21 +18,13 @@ if ($_POST){
 		$pass = trim($_POST['passReg']);
 		$rpass = trim($_POST['passReg']);
 
-		// echo "Index - Post tiene: ";
-		// echo "<br>";
-		// var_dump($_POST);
-		// $errores = validar($_POST);
-
 		if (empty($errores)) {
-
 			if (count($errores) == 0) {
-				$user = new User([$name, $email, $pass]);
-				$DBJSON = new DBJSON ();
+				$user = new User(['name'=>$name, 'email'=>$email, 'pass'=>$pass, 'user_type_id'=>1]);
+				$SQL = new DBMySQL();
+				// $DBJSON = new DBJSON ();
 				$user->save();
 
-				// echo "Index - User tiene: ";
-				// echo "<br>";
-				// var_dump($user);
 			}
 		}
 	}
