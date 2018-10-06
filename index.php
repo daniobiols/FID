@@ -1,43 +1,62 @@
 <?php
 
-require_once('funciones.php');
-require_once('classes/DBJSON.php');
-require_once('classes/DBMySQL.php');
-require_once('classes/user.php');
- $name = '';
- $email = '';
- $pass = '';
- $rpass = '';
- $errores = [];
+// require_once('funciones.php');
+// require_once('classes/DBJSON.php');
 
- if ($_POST)
- {
- 	if(isset($_POST['regBtn']))
-	{
- 		$name = trim($_POST['nameReg']);
- 		$email = trim($_POST['emailReg']);
-		$pass = trim($_POST['passReg']);
-		$rpass = trim($_POST['passReg']);
- 		// echo "Index - Post tiene: ";
-		// echo "<br>";
-		// var_dump($_POST);
-		// $errores = validar($_POST);
- 		if (empty($errores))
-		{
- 			if (count($errores) == 0)
-			{
-				$user = new User([$name, $email, $pass]);
-				$DBJSON = new DBJSON ();
-				$user = new User(['name'=>$name, 'email'=>$email, 'pass'=>$pass, 'user_type_id'=>1]);
-				$SQL = new DBMySQL();
-				// $DBJSON = new DBJSON ();
-				$user->save();
- 				// echo "Index - User tiene: ";
-				// echo "<br>";
-				// var_dump($user);
-			}
-		}
-	}
+include_once('classes/loader.php');
+require_once('classes/user.php');
+required_once('classes/validator.php');
+
+$name = '';
+$email = '';
+$pass = '';
+$rpass = '';
+$errores = [];
+
+if ($_POST)
+{
+  if(isset($_POST['regBtn']))
+  {
+  	$name = trim($_POST['nameReg']);
+  	$email = trim($_POST['emailReg']);
+  	$pass = trim($_POST['passReg']);
+  	$rpass = trim($_POST['passReg']);
+
+  	if (empty($errores))
+  	{
+  		if (count($errores) == 0)
+  		{
+  			// $user = new User([$name, $email, $pass]);
+  			// $DBJSON = new DBJSON ();
+
+  			$user = new User(['name'=>$name, 'email'=>$email, 'password'=>$pass, 'type_users_id'=>1]);
+  			$user->save();
+  		}
+	  }
+  }
+
+  if(isset($_POST['logBtn']))
+  {
+    if ($auth->loginControl())
+    {
+      header("Location:index.php");
+      exit;
+    }
+
+    $errores = $validator->validarLogin($_POST, $db);
+
+    if ($_POST)
+    {
+      $validator->validarLogin($_POST, $db);
+  		if (count($errores) == 0)
+      {
+        $email = $_POST["email"];
+        $auth->login($email);
+        header("Location:perfil.php");
+  			exit;
+  		}
+  	}
+  }
 }
 ?>
 

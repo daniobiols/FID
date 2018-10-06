@@ -1,6 +1,6 @@
 <?php
 
-require_once("DB.php")
+required_once('classes/db.php');
 
 class Auth
 {
@@ -17,22 +17,28 @@ class Auth
 
   public function login()
   {
-
+    $_SESSION["estoyLogueado"] = $email;
   }
 
   public function loginControl()
   {
-
+    return isset($_SESSION["estoyLogueado"]);
   }
 
   public function usuarioLogueado()
   {
-
+    if ($this->loginControl()) {
+        $email = $_SESSION["estoyLogueado"];
+        return $db->buscamePorEmail($email);
+    } else {
+        return NULL;
+    }
   }
 
   public function logout()
   {
-
+    session_destroy();
+    setcookie("estoyLogueado", "", -1);
   }
 }
  ?>

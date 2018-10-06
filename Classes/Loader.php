@@ -1,10 +1,8 @@
 <?php
 
-require_once("DBMySQL.php")
-require_once("Auth.php")
-require_once("Validator.php")
+require_once("classes/Auth.php");
+require_once("classes/Validator.php");
 
-$db = new DBMySQL();
 $auth = new Auth();
 $validator = new Validator();
 

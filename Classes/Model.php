@@ -1,5 +1,7 @@
 <?php
-require_once ('classes/DBJSON.php');
+
+require_once('DBMySQL.php');
+
 abstract class Model
 {
   public $table;
@@ -8,20 +10,16 @@ abstract class Model
   protected $db;
   public function __construct($datos=[])
   {
-    // echo "Model - Datos tiene: ";
-		// echo "<br>";
-    // var_dump($datos);
     $this->datos = $datos;
-    // $this->db = new DBJSON();
     $this->db = new DBMySQL();
   }
   public function save()
   {
-    // if (!$this->getAttr('email')) {
+    if (!$this->getAttr('email')) {
     $this->insert();
-    // } else {
-    //   $this->update();
-    // }
+    } else {
+      // $this->update();
+    }
   }
   private function insert()
   {
@@ -34,5 +32,14 @@ abstract class Model
   public function setAttr($attr, $value)
   {
     $this->datos[$attr] = $value;
+  }
+
+  public function find($id)
+  {
+    $sql = 'select * from '.$this->table.' where id = :id'; //fecth
+    $stmt = $this->db->conn->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 }

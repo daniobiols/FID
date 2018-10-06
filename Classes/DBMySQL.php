@@ -2,16 +2,40 @@
 <!-- <pre> -->
 
 <?php
+
+require_once("DB.php");
+
 class DBMySQL extends DB
 {
+	protected $opt     = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
+	protected $host    = 'mysql:host=127.0.0.1;dbname=FID;port=8889';
+	protected $db_user = 'root';
+	protected $db_pass = 'root';
+	protected $columnas = '';
+	protected $values = '';
+	public $conn;
+
+	public function __construct()
+	{
+		try {
+			$this->conn = new PDO($this->host, $this->db_user, $this->db_pass, $this->opt);
+			$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			exit;
+		}
+	}
 	public function insert($datos, $model)
 	{
-		$opt     = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-		$host    = 'mysql:host=127.0.0.1;dbname=FID;port=8889';
-		$db_user = 'root';
-		$db_pass = 'root';
-		$columnas = '';
-		$values = '';
+
+
+		echo "<br>";
+		echo "DBMysql - Datos tiene: ";
+		echo "<br>";
+
+
+
+
 
 		foreach ($datos as $key => $value)
 		{
@@ -25,9 +49,9 @@ class DBMySQL extends DB
 		$values = trim($values, ',');
 
 		try {
-			$db = new PDO($host, $db_user, $db_pass, $opt);
+
 			$sql = 'INSERT INTO '.$model->table.' ('.$columnas.') VALUES ('.$values.')';
-			$query = $db->prepare($sql);
+			$query = $this->conn->prepare($sql);
 			$query->execute();
 			$db = null;
 		} catch(\Exception $e) {
@@ -36,36 +60,23 @@ class DBMySQL extends DB
 			echo $e->getMessage();
 		}
 	}
-	public function searchEmail($email)
+
+	function searchEmail($email)
 	{
-		// $opt     = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-		// $host    = 'mysql:host=127.0.0.1;dbname=FID;port=8889';
-		// $db_user = 'root';
-		// $db_pass = 'root';
-		// $columnas = '';
-		// $values = '';
-		// foreach ($datos as $key => $value)
-		// {
-		// 	if (in_array($key, $model->columns))
-		// 	{
-		// 		$columnas .= $key . ',';
-		// 		$values .= '"' . $value . '",';
-		// 	}
-		// }
-		// $columnas = trim($columnas, ',');
-		// $values = trim($values, ',');
-		// try {
-		// 	$db = new PDO($host, $db_user, $db_pass, $opt);
-		// 	$sql = 'SELECT ('.$values.')' FROM '.$model->table.' ('.$columnas.');
-		// 	$query = $db->prepare($sql);
-		// 	$query->execute();
-		// 	$db = null;
-		// } catch(\Exception $e) {
-		// 	var_dump($e);
-		// 	// ENTRO SOLO SI ERROR
-		// 	echo $e->getMessage();
-		// }
+			$query = $this->conexion->prepare("Select * from usuarios where email = :email");
+			$query->bindValue(":email", $email);
+			$query->execute();
+
+			$usuarioFormatoArray = $query->fetch(PDO::FETCH_ASSOC);
+
+			if ($usuarioFormatoArray) {
+					$usuario = new Usuario($usuarioFormatoArray["email"], $usuarioFormatoArray["password"], $usuarioFormatoArray["id"]);
+					return $usuario;
+			} else {
+					return null;
+			}
 	}
+
 	public function loadAll()
 	{
 			//...
