@@ -1,48 +1,41 @@
 <?php
 
 require_once('funciones.php');
-require_once('classes/Model.php');
-require_once('classes/User.php');
+require_once('classes/DBJSON.php');
+require_once('classes/DBMySQL.php');
+require_once('classes/user.php');
+ $name = '';
+ $email = '';
+ $pass = '';
+ $rpass = '';
+ $errores = [];
 
-
-$name = '';
-// $pass = '';
-// $rpass = '';
-
-$email = '';
-$errores = [];
-
-if ($_POST){
-	if(isset($_POST['regBtn'])){
-		$name = trim($_POST['nameReg']);
-		$email = trim($_POST['emailReg']);
+ if ($_POST)
+ {
+ 	if(isset($_POST['regBtn']))
+	{
+ 		$name = trim($_POST['nameReg']);
+ 		$email = trim($_POST['emailReg']);
 		$pass = trim($_POST['passReg']);
-		$rpass = trim($_POST['rpassReg']);
-
-		$errores = validar($_POST);
-
-		if (empty($errores)) {
-
-			if (count($errores) == 0) {
-				$usuario = new User (['name'=>$name,	 'email'=>$email, 'password'=>$pass]);
-				$usuario->save();
+		$rpass = trim($_POST['passReg']);
+ 		// echo "Index - Post tiene: ";
+		// echo "<br>";
+		// var_dump($_POST);
+		// $errores = validar($_POST);
+ 		if (empty($errores))
+		{
+ 			if (count($errores) == 0)
+			{
+				$user = new User([$name, $email, $pass]);
+				$DBJSON = new DBJSON ();
+				$user = new User(['name'=>$name, 'email'=>$email, 'pass'=>$pass, 'user_type_id'=>1]);
+				$SQL = new DBMySQL();
+				// $DBJSON = new DBJSON ();
+				$user->save();
+ 				// echo "Index - User tiene: ";
+				// echo "<br>";
+				// var_dump($user);
 			}
-		}
-	}
-
-	if(isset($_POST['logBtn'])){
-		$email = trim($_POST['emailLog']);
-		$pass = trim($_POST['passLog']);
-		$errores = validarLogin($_POST);
-
-		if (empty($errores)) {
-			$usuario = existeMail($email);
-			iniciar($usuario);
-		}
-
-		if (isset($_POST['recordarme'])) {
-			setcookie('id', $usuario['id'], time() + 84600);
-			estaLogueado();
 		}
 	}
 }

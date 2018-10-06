@@ -73,12 +73,6 @@
 
         <!--Boton OPCIONES DE USUARIO (iniciar sesion - registrarse)-->
 
-        <!-- <div class="dropdown">
-        <button class="icono-banner btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="images/usuarioLog.png" alt="">
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
-
         <!--Boton INICIAR SESION-->
         <button type="button" class="icono-banner btn btn-light" data-toggle="modal" data-target="#loginModal" data-whatever="@getbootstrap"><img src="images/login.png" alt="Login"></button>
         <div class="modal fade" id="loginModal" tabindex="-1" role="modal" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -94,7 +88,7 @@
                 <form class="" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Correo Electrónico:</label>
-                    <input type="email" name='emailLog' class="form-control" id="recipient-name" value="<?=$email?>">
+                    <input type="email" name='emailLog' class="form-control" id="recipient-name" value="">
                     <?php if (isset($errores['emailLog'])): ?>
                       <span style='color: red;'>
                         <?=$errores['emailLog'];?>
@@ -138,7 +132,7 @@
                 <form class="" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Nombre:</label>
-                    <input type="text" name='nameReg' class="form-control" id="recipient-name" value="<?=$name?>">
+                    <input type="text" name='nameReg' class="form-control" id="recipient-name" value="">
                     <?php if (isset($errores['nameReg'])): ?>
                       <span style='color: red;'>
                         <?=$errores['nameReg'];?>
@@ -147,7 +141,7 @@
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Correo Electrónico:</label>
-                    <input type="text" name='emailReg' class="form-control" id="recipient-name" value="<?=$email?>">
+                    <input type="text" name='emailReg' class="form-control" id="recipient-name" value="">
                     <?php if (isset($errores['emailReg'])): ?>
                       <span style='color: red;'>
                         <?=$errores['emailReg'];?>
