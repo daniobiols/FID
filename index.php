@@ -1,5 +1,5 @@
 
-<pre>
+<!-- <pre> -->
 <?php
 
 // require_once('funciones.php');

@@ -64,9 +64,8 @@ class DBMySQL extends DB
 
 		if ($usuarioFormatoArray)
 		{
-			$usuario = new User($usuarioFormatoArray["email"], $usuarioFormatoArray["password"], $usuarioFormatoArray["id"]);
-			var_dump($usuario->datos);
-			exit;
+			$usuario = new User([$usuarioFormatoArray["email"], 'password'=>$usuarioFormatoArray["password"]]);
+			// $usuario = new User($usuarioFormatoArray["email"], $usuarioFormatoArray["password"], $usuarioFormatoArray["id"]);
 			return $usuario;
 		} else {
 			return null;

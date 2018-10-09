@@ -30,14 +30,17 @@
 
           $usuario = $db->searchEmail($datos["email"]);
           $usuarioPass = $db->getPassword($datos["email"]);
-          // var_dump($usuario);
-          // var_dump($usuarioPass);
+
+          // var_dump($usuarioPass->datos);
+
           if ($datos["password"] == "")
           {
             $errores["password"] = "Por favor ingresa una contraseña";
           } else if ($usuario != null) {
-              if (password_verify($datos["password"], $usuarioPass) == false)
+              if (password_verify($datos["password"], $usuarioPass->datos) == false)
               {
+                var_dump($datos["password"]);
+                var_dump($usuarioPass->datos);
                 $errores["password"] = "La contraseña no es valida";
               }
           }
