@@ -14,9 +14,9 @@ class Auth
     }
   }
 
-  public function login()
+  public function login($email)
   {
-    $_SESSION["id"] = $emailLog;
+    $_SESSION["id"] = $email;
   }
 
   public function loginControl()

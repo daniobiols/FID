@@ -37,14 +37,11 @@
           {
             $errores["password"] = "Por favor ingresa una contraseña";
           } else if ($usuario != null) {
-              if (password_verify($datos["password"], $usuarioPass->datos) == false)
+              if (password_verify($datos["password"], $usuarioPass->datos) == true)
               {
-                var_dump($datos["password"]);
-                var_dump($usuarioPass->datos);
                 $errores["password"] = "La contraseña no es valida";
               }
           }
-
           return $errores;
         }
 
