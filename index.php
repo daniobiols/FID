@@ -1,3 +1,5 @@
+
+<pre>
 <?php
 
 // require_once('funciones.php');
@@ -5,13 +7,13 @@
 
 include_once('classes/loader.php');
 require_once('classes/user.php');
-required_once('classes/validator.php');
 
 $name = '';
 $email = '';
 $pass = '';
 $rpass = '';
 $errores = [];
+
 
 if ($_POST)
 {
@@ -31,32 +33,24 @@ if ($_POST)
 
   			$user = new User(['name'=>$name, 'email'=>$email, 'password'=>$pass, 'type_users_id'=>1]);
   			$user->save();
+
   		}
 	  }
   }
 
   if(isset($_POST['logBtn']))
   {
-    if ($auth->loginControl())
-    {
-      header("Location:index.php");
-      exit;
-    }
+    // var_dump($_POST);
+    $errores = $validator->validarLogin($_POST);
 
-    $errores = $validator->validarLogin($_POST, $db);
-
-    if ($_POST)
+    if (count($errores) == 0)
     {
-      $validator->validarLogin($_POST, $db);
-  		if (count($errores) == 0)
-      {
-        $email = $_POST["email"];
-        $auth->login($email);
-        header("Location:perfil.php");
-  			exit;
-  		}
-  	}
-  }
+      $email = $_POST["email"];
+      // si no hay errores, LOGUEAR
+      $auth->login($email);
+      //nuestra instancia de Auth usa su metodo login() para loguear al usuario
+		}
+	}
 }
 ?>
 

@@ -1,3 +1,3 @@
 <?php
 
-phpinfo();
+var_dump(isset($_SESSION["id"]));

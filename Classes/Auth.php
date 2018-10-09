@@ -1,6 +1,5 @@
 <?php
 
-required_once('classes/db.php');
 
 class Auth
 {
@@ -9,27 +8,27 @@ class Auth
   {
     session_start();
 
-    if (!isset($_SESSION["estoyLogueado"]) && isset($_COOKIE["estoyLogueado"]))
+    if (!isset($_SESSION["id"]) && isset($_COOKIE["id"]))
     {
-      $_SESSION["estoyLogueado"] = $_COOKIE["estoyLogueado"];
+      $_SESSION["id"] = $_COOKIE["id"];
     }
   }
 
   public function login()
   {
-    $_SESSION["estoyLogueado"] = $email;
+    $_SESSION["id"] = $emailLog;
   }
 
   public function loginControl()
   {
-    return isset($_SESSION["estoyLogueado"]);
+    return isset($_SESSION["id"]);
   }
 
   public function usuarioLogueado()
   {
     if ($this->loginControl()) {
-        $email = $_SESSION["estoyLogueado"];
-        return $db->buscamePorEmail($email);
+        $email = $_SESSION["id"];
+        return $db->searchEmail($email);
     } else {
         return NULL;
     }
@@ -38,7 +37,7 @@ class Auth
   public function logout()
   {
     session_destroy();
-    setcookie("estoyLogueado", "", -1);
+    setcookie("id", "", -1);
   }
 }
  ?>

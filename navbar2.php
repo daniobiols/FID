@@ -88,19 +88,19 @@
                 <form class="" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Correo Electrónico:</label>
-                    <input type="email" name='emailLog' class="form-control" id="recipient-name" value="">
-                    <?php if (isset($errores['emailLog'])): ?>
+                    <input type="text" name='email' class="form-control" id="recipient-name" value="">
+                    <?php if (isset($errores['email'])): ?>
                       <span style='color: red;'>
-                        <?=$errores['emailLog'];?>
+                        <?=$errores['email'];?>
                       </span>
                     <?php endif; ?>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Contraseña:</label>
-                    <input type="password" class="form-control" id="recipient-name" name='passLog'>
-                    <?php if (isset($errores['passLog'])): ?>
+                    <input type="password" class="form-control" id="recipient-name" name='password'>
+                    <?php if (isset($errores['password'])): ?>
                       <span style='color: red;'>
-                        <?=$errores['passLog'];?>
+                        <?=$errores['password'];?>
                       </span>
                     <?php endif; ?>
                   </div>
@@ -110,7 +110,8 @@
                   </div>
                   <div class="modal-footer">
                     <button type="submit" name="logBtn" class="btn btn-primary">Iniciar Sesion</button>
-                    <button type="button" class="btn btn-primary">¿Olvidó su contraseña?</button>
+                    <br>
+                    <button type="button" class="btn btn-primary">Olvidé mi contraseña</button>
                   </div>
                 </form>
               </div>

@@ -8,14 +8,16 @@ abstract class Model
   public $columns;
   public $datos;
   protected $db;
-  public function __construct($datos=[])
+  public function __construct($datos)
   {
+    // $datos=[]
     $this->datos = $datos;
     $this->db = new DBMySQL();
   }
   public function save()
   {
-    if (!$this->getAttr('email')) {
+    if (!$this->getAttr($this->datos['email'])) {
+      // var_dump($this->datos['email']);
     $this->insert();
     } else {
       // $this->update();

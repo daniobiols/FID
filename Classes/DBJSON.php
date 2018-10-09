@@ -32,7 +32,7 @@ require_once ('classes/db.php');
             //..
         }
 
-        public function loadAll()
+        public function traeTodaLaBase()
         {
             //...
         }

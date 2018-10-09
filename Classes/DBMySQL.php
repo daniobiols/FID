@@ -5,6 +5,7 @@
 
 require_once("DB.php");
 
+
 class DBMySQL extends DB
 {
 	protected $opt     = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
@@ -28,58 +29,81 @@ class DBMySQL extends DB
 	public function insert($datos, $model)
 	{
 
-
-		echo "<br>";
-		echo "DBMysql - Datos tiene: ";
-		echo "<br>";
-
-
-
-
-
 		foreach ($datos as $key => $value)
 		{
+
 			if (in_array($key, $model->columns))
 			{
-				$columnas .= $key . ',';
-				$values .= '"' . $value . '",';
+				$this->columnas .= $key . ',';
+				$this->values .= '"' . $value . '",';
+				// var_dump($values);
 			}
 		}
-		$columnas = trim($columnas, ',');
-		$values = trim($values, ',');
+		$this->columnas = trim($this->columnas, ',');
+		$this->values = trim($this->values, ',');
 
 		try {
 
-			$sql = 'INSERT INTO '.$model->table.' ('.$columnas.') VALUES ('.$values.')';
+			$sql = 'INSERT INTO '.$model->table.' ('.$this->columnas.') VALUES ('.$this->values.')';
 			$query = $this->conn->prepare($sql);
 			$query->execute();
 			$db = null;
 		} catch(\Exception $e) {
 			var_dump($e);
-			// ENTRO SOLO SI ERROR
 			echo $e->getMessage();
 		}
 	}
 
 	function searchEmail($email)
 	{
-			$query = $this->conexion->prepare("Select * from usuarios where email = :email");
-			$query->bindValue(":email", $email);
-			$query->execute();
+		$query = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
+		$query->bindValue(":email", $email);
+		$query->execute();
 
-			$usuarioFormatoArray = $query->fetch(PDO::FETCH_ASSOC);
+		$usuarioFormatoArray = $query->fetch(PDO::FETCH_ASSOC);
 
-			if ($usuarioFormatoArray) {
-					$usuario = new Usuario($usuarioFormatoArray["email"], $usuarioFormatoArray["password"], $usuarioFormatoArray["id"]);
-					return $usuario;
-			} else {
-					return null;
-			}
+		if ($usuarioFormatoArray)
+		{
+			$usuario = new User($usuarioFormatoArray["email"], $usuarioFormatoArray["password"], $usuarioFormatoArray["id"]);
+			var_dump($usuario->datos);
+			exit;
+			return $usuario;
+		} else {
+			return null;
+		}
 	}
 
-	public function loadAll()
+	function getPassword($email)
 	{
-			//...
+		$query = $this->conn->prepare("SELECT * FROM users WHERE email = '$email'");
+		$query->execute();
+
+		$usuarioFormatoArray = $query->fetch(PDO::FETCH_ASSOC);
+		if ($usuarioFormatoArray)
+		{
+			$usuario = new User($usuarioFormatoArray["password"]);
+			return $usuario;
+		} else {
+			return null;
+		}
+	}
+
+	public function traeTodaLaBase()
+	{
+		$query = $this->conexion->prepare("SELECT * FROM usuarios");
+		$query->execute();
+
+		$usuariosFormatoArray = $query->fetchAll(PDO::FETCH_ASSOC);
+		//Esta variable va a traer todos los usuarios en formato array, pero queremos objetos...
+		$usuariosFormatoClase = [];
+		//asi que armamos nuestro array de usuarios EN FORMATO DE CLASE y lo "foreacheamos" (?)
+		foreach ($usuariosFormatoArray as $usuario):
+				//array DE OBJETOS del tipo Usuario, nada mas y nada menos. Como se procesan despues, es responsabilidad de otra clase.
+				$usuariosFormatoClase[] = new Usuario($usuario["email"], $usuario["password"], $usuario["id"]);
+		endforeach;
+
+		return $usuariosFormatoClase;
+		//Aclaro de nuevo, el array que devuelve este metodo es un ARRAY DE OBJETOS.
 	}
 }
 // echo "</br>";

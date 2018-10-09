@@ -1,9 +1,9 @@
-<?php
+<!-- <?php
 require_once('funciones.php');
 
 $usuario = traerPorId($_SESSION['id'])
 
-?>
+?> -->
 
 
 
