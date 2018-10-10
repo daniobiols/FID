@@ -8,8 +8,6 @@ class Product extends Model
   public $table = 'Products';
   public $columns = ['name','product_code','product_type','size','color','is_popular','price','price_list',    'quantity','description','image','categories_id', 'subcategories_id'];
 
-
-
   	public function guardarProdImagen($laImagen,$nombreImagen){
   			$prod_errores = [];
   			// var_dump($_FILES);

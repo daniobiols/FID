@@ -1,10 +1,5 @@
-<?php
 
-require_once('funciones.php');
-
-?>
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html<html>
 	<head>
 
 		<title>FID</title>

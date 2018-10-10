@@ -14,40 +14,41 @@ $pass = '';
 $rpass = '';
 $errores = [];
 
-
 if ($_POST)
 {
   if(isset($_POST['regBtn']))
   {
-  	$name = trim($_POST['nameReg']);
-  	$email = trim($_POST['emailReg']);
-  	$pass = trim($_POST['passReg']);
-  	$rpass = trim($_POST['passReg']);
+  	$name = trim($_POST['name']);
+  	$email = trim($_POST['email']);
+  	$pass = trim($_POST['password']);
+  	$rpass = trim($_POST['rpassword']);
 
-  	if (empty($errores))
+    if (empty($errores))
   	{
+      $errores = $validator->validarRegistro($_POST);
+
   		if (count($errores) == 0)
   		{
   			// $user = new User([$name, $email, $pass]);
   			// $DBJSON = new DBJSON ();
-
   			$user = new User(['name'=>$name, 'email'=>$email, 'password'=>$pass, 'type_users_id'=>1]);
-  			$user->save();
 
+        $user->save();
+    		}
   		}
 	  }
-  }
 
   if(isset($_POST['logBtn']))
   {
-    // var_dump($_POST);
     $errores = $validator->validarLogin($_POST);
-
+    $email = $_POST['email'];
     if (count($errores) == 0)
     {
       $email = $_POST["email"];
       // si no hay errores, LOGUEAR
       $auth->login($email);
+
+
       //nuestra instancia de Auth usa su metodo login() para loguear al usuario
 		}
 	}

@@ -21,7 +21,7 @@
             <a class="nav-link fuente" href="">TIENDAS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fuente" href="">BLOG</a>
+            <a class="nav-link fuente" href="http://stylescout.blogspot.com/">BLOG</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fuente" href="preguntas_frecuentes.php">PREGUNTAS FRECUENTES</a>
@@ -74,7 +74,13 @@
         <!--Boton OPCIONES DE USUARIO (iniciar sesion - registrarse)-->
 
         <!--Boton INICIAR SESION-->
-        <button type="button" class="icono-banner btn btn-light" data-toggle="modal" data-target="#loginModal" data-whatever="@getbootstrap"><img src="images/login.png" alt="Login"></button>
+        <button type="button" class="icono-banner btn btn-light" data-toggle="modal" data-target="#loginModal" data-whatever="@getbootstrap">
+          <p>Login</p>
+          <!-- <img src="images/login.png" alt="Login"> -->
+        </button>
+        <div class="separador">
+
+        </div>
         <div class="modal fade" id="loginModal" tabindex="-1" role="modal" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -88,7 +94,7 @@
                 <form class="" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Correo Electrónico:</label>
-                    <input type="text" name='email' class="form-control" id="recipient-name" value="">
+                    <input type="text" name='email' class="form-control" id="recipient-name" value='<?=$email?>'>
                     <?php if (isset($errores['email'])): ?>
                       <span style='color: red;'>
                         <?=$errores['email'];?>
@@ -119,7 +125,10 @@
           </div>
         </div>
         <!--Boton REGISTRARSE-->
-        <button type="button" class="icono-banner btn btn-light" data-toggle="modal" data-target="#registroModal" data-whatever="@getbootstrap"><img src="images/register.png" alt="Register"></button>
+        <button type="button" class="icono-banner btn btn-light" data-toggle="modal" data-target="#registroModal" data-whatever="@getbootstrap">
+          <p>Registrate</p>
+          <!-- <img src="images/register.png" alt="Register"> -->
+        </button>
         <div class="modal fade show" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -133,34 +142,34 @@
                 <form class="" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Nombre:</label>
-                    <input type="text" name='nameReg' class="form-control" id="recipient-name" value="">
-                    <?php if (isset($errores['nameReg'])): ?>
+                    <input type="text" name='name' class="form-control" id="recipient-name" value="">
+                    <?php if (isset($errores['name'])): ?>
                       <span style='color: red;'>
-                        <?=$errores['nameReg'];?>
+                        <?=$errores['name'];?>
                       </span>
                     <?php endif; ?>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Correo Electrónico:</label>
-                    <input type="text" name='emailReg' class="form-control" id="recipient-name" value="">
-                    <?php if (isset($errores['emailReg'])): ?>
+                    <input type="text" name='email' class="form-control" id="recipient-name" value="">
+                    <?php if (isset($errores['email'])): ?>
                       <span style='color: red;'>
-                        <?=$errores['emailReg'];?>
+                        <?=$errores['email'];?>
                       </span>
                     <?php endif; ?>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Contraseña:</label>
-                    <input type="password" name='passReg' class="form-control" id="recipient-name" >
-                    <?php if (isset($errores['passReg'])): ?>
+                    <input type="password" name='password' class="form-control" id="recipient-name" >
+                    <?php if (isset($errores['password'])): ?>
                       <span style='color: red;'>
-                        <?=$errores['passReg'];?>
+                        <?=$errores['password'];?>
                       </span>
                     <?php endif; ?>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Confirmar Contraseña:</label>
-                    <input type="password" name='rpassReg' class="form-control" id="recipient-name">
+                    <input type="password" name='rpassword' class="form-control" id="recipient-name">
                   </div>
                   <div class="modal-footer">
                     <button type="submit" name='regBtn' class="btn btn-primary">Crear una cuenta nueva</button>
