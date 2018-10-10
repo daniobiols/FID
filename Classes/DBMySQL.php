@@ -9,7 +9,7 @@ require_once("DB.php");
 class DBMySQL extends DB
 {
 	protected $opt     = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-	protected $host    = 'mysql:host=127.0.0.1;dbname=FID;port=8889';
+	protected $host    = 'mysql:host=127.0.0.1;dbname=FID;port=3306';
 	protected $db_user = 'root';
 	protected $db_pass = 'root';
 	protected $columnas = '';
@@ -104,6 +104,35 @@ class DBMySQL extends DB
 		return $usuariosFormatoClase;
 		//Aclaro de nuevo, el array que devuelve este metodo es un ARRAY DE OBJETOS.
 	}
+
+	//ACTUALIZAR PERFIL DEL USUARIO
+	public function UpdateUser($datos, $model)
+	{
+		foreach(datos as $key => $value)
+		{
+			 if (in_array($key, $model->columns))
+			{
+				$this->columnas .= $key . ',';
+				$this->values .= '"' . $value . '",';
+			}
+	 	}
+		$this->columnas = trim($this->columnas, ',');
+		$this->values = trim($this->values, ',');
+
+		try {
+
+			$sql = 'UPDATE '.$model->table.' SET ('.$this->columnas.') = ('.$this->values.')';
+
+			$query = $this->conn->prepare($sql);
+			$query->execute();
+			$db = null;
+				}
+				catch(\Exception $e)
+				{
+					var_dump($e);
+					echo $e->getMessage();
+		}
+
+	}
+
 }
-// echo "</br>";
-// echo '<br>Sigo ejecutando';

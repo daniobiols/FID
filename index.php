@@ -5,8 +5,8 @@
 // require_once('funciones.php');
 // require_once('classes/DBJSON.php');
 
-include_once('classes/loader.php');
-require_once('classes/user.php');
+include_once('Classes/Loader.php');
+require_once('Classes/User.php');
 
 $name = '';
 $email = '';

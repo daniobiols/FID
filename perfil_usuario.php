@@ -1,9 +1,17 @@
-<!-- <?php
-require_once('funciones.php');
+<?php
+//require_once('funciones.php');
 
-$usuario = traerPorId($_SESSION['id'])
 
-?> -->
+include_once('Classes/Model.php');
+include_once('Classes/Loader.php');
+require_once('Classes/User.php');
+require_once('Classes/DBMySQL.php');
+
+ $usuario = traeTodaLaBase($_SESSION['id']);
+
+
+
+?>
 
 
 
@@ -46,20 +54,24 @@ $usuario = traerPorId($_SESSION['id'])
             <div class="contenerdor_formulario_usuario">
                 <h2 class="fuente_formulario_usuario" id="id_contacto">MI CUENTA</h2>
                 <form class="formulario_usuario">
+										<div class="form-group">
+											<label class="fuente_formulario_usuario" for="exampleFormControlInput1">EMAIL</label>
+											<input type="text" class="form-control" value="<?=$usuario["email"]?>" id="Email">
+										</div>
                     <div class="form-group">
-                        <label class="fuente_formulario_usuario" for="exampleFormControlInput1">nombre y apellido</label>
-                        <input type="text" class="form-control" value="<?=$usuario['nameReg']?>" id="Name">
+                        <label class="fuente_formulario_usuario" for="exampleFormControlInput1">NOMBRE</label>
+                        <input type="text" class="form-control" value="<?=$User['name']?>" id="Name">
+                    </div>
+										<div class="form-group">
+                        <label class="fuente_formulario_usuario" for="exampleFormControlInput1">APELLIDO</label>
+                        <input type="text" class="form-control" value="<?=$usuario['lastname']?>" id="Name">
                     </div>
                     <div class="form-group">
-                        <label class="fuente_formulario_usuario" for="exampleFormControlInput1">Email</label>
-                        <input type="text" class="form-control" value="<?=$usuario['emailReg']?>" id="Email">
-                    </div>
-                    <div class="form-group">
-                        <label class="fuente_formulario_usuario" for="exampleFormControlInput1">numero de telefono</label>
+                        <label class="fuente_formulario_usuario" for="exampleFormControlInput1">TELEFONO</label>
                         <input type="tel" class="form-control" id="Phone">
                     </div>
                     <div class="form-group">
-                        <label class="fuente_formulario_usuario" for="exampleFormControlInput1">direccion</label>
+                        <label class="fuente_formulario_usuario" for="exampleFormControlInput1">DIRECCIÓN</label>
                         <input type="tel" class="form-control" id="Phone">
                     </div>
                     <div class="form-group">
