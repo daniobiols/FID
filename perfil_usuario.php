@@ -1,22 +1,4 @@
 <?php
-<<<<<<< HEAD
-=======
-//NO VA MAS--require_once('funciones.php');
-
-
-include_once('Classes/Model.php');
-include_once('Classes/Loader.php');
-require_once('Classes/User.php');
-require_once('Classes/DBMySQL.php');
-
- //$usuario = traeTodaLaBase($_SESSION['id']);
-
-
-
-?>
-
->>>>>>> 4f8107332af44b0ef9299f0c9e384e34b3519e82
-
 include_once('classes/Model.php');
 include_once('classes/Loader.php');
 require_once('classes/User.php');
@@ -73,11 +55,7 @@ require_once('classes/DBMySQL.php');
                     </div>
 										<div class="form-group">
                         <label class="fuente_formulario_usuario" for="exampleFormControlInput1">APELLIDO</label>
-<<<<<<< HEAD
-                        <input type="text" class="form-control" value="<?=$user['lastname']?>" id="Name">
-=======
                         <input type="text" class="form-control" value="<?=$usuario['lastname']?>" id="Name">
->>>>>>> 4f8107332af44b0ef9299f0c9e384e34b3519e82
                     </div>
                     <div class="form-group">
                         <label class="fuente_formulario_usuario" for="exampleFormControlInput1">TELEFONO</label>
@@ -91,13 +69,9 @@ require_once('classes/DBMySQL.php');
                         <label class="fuente_formulario_usuario" for="exampleFormControlTextarea1">avatar</label>
                         <input type="file" class="form-control" id="avatar" >
                     </div>
-<<<<<<< HEAD
-                    <button type="submit" class="btn btn-ttc">Send</button>
-										<button type="submit" class="btn btn-ttc">Actualizar Datos</button>
-=======
+
                     <button type="button" class="btn btn-ttc">Send</button>
 										<button type="button" class="btn btn-ttc">Actualizar Datos</button>
->>>>>>> 4f8107332af44b0ef9299f0c9e384e34b3519e82
                 </form>
             <hr style="color: #0054b2;" />
             </div>

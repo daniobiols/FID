@@ -91,10 +91,7 @@ class DBMySQL extends DB
 		return $usuariosFormatoClase;
 		//Aclaro de nuevo, el array que devuelve este metodo es un ARRAY DE OBJETOS.
 	}
-<<<<<<< HEAD
-=======
 
->>>>>>> 4f8107332af44b0ef9299f0c9e384e34b3519e82
 	//ACTUALIZAR PERFIL DEL USUARIO
 	public function UpdateUser($datos, $model)
 	{
@@ -108,30 +105,21 @@ class DBMySQL extends DB
 	 	}
 		$this->columnas = trim($this->columnas, ',');
 		$this->values = trim($this->values, ',');
-<<<<<<< HEAD
-		try {
-			$sql = 'UPDATE '.$model->table.' SET ('.$this->columnas.') = ('.$this->values.')';
-=======
+		try
+		{
+				$sql = 'UPDATE '.$model->table.' SET ('.$this->columnas.') = ('.$this->values.')';
 
-		try {
-
-			$sql = 'UPDATE '.$model->table.' SET ('.$this->columnas.') = ('.$this->values.')';
-
->>>>>>> 4f8107332af44b0ef9299f0c9e384e34b3519e82
-			$query = $this->conn->prepare($sql);
-			$query->execute();
-			$db = null;
-				}
+				$query = $this->conn->prepare($sql);
+				$query->execute();
+				$db = null;
+		}
 				catch(\Exception $e)
 				{
 					var_dump($e);
 					echo $e->getMessage();
-		}
-<<<<<<< HEAD
-	}
-=======
+				}
+
 
 	}
 
->>>>>>> 4f8107332af44b0ef9299f0c9e384e34b3519e82
 }
