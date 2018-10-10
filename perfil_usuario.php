@@ -1,5 +1,5 @@
 <?php
-//require_once('funciones.php');
+//NO VA MAS--require_once('funciones.php');
 
 
 include_once('Classes/Model.php');
@@ -7,7 +7,7 @@ include_once('Classes/Loader.php');
 require_once('Classes/User.php');
 require_once('Classes/DBMySQL.php');
 
- $usuario = traeTodaLaBase($_SESSION['id']);
+ //$usuario = traeTodaLaBase($_SESSION['id']);
 
 
 
@@ -79,6 +79,7 @@ require_once('Classes/DBMySQL.php');
                         <input type="file" class="form-control" id="avatar" >
                     </div>
                     <button type="button" class="btn btn-ttc">Send</button>
+										<button type="button" class="btn btn-ttc">Actualizar Datos</button>
                 </form>
             <hr style="color: #0054b2;" />
             </div>
