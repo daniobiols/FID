@@ -1,45 +1,93 @@
      <?php
-      require_once('prod_funciones.php');
-      $ay_genero=['Hombre','Mujer','Niñe'];
-      $ay_categoria=['Indumentaria','Calzado','Accesorio'];
-      // $ay_subcategorias=[];
-      $ay_tipoproducto=['Zapatillas','Zapatos','Botas','Borcegos','Remeras','Pantalones','Shorts','Buzos','Camperas','Bolsos','Mochilas','Medias'];
-      $ay_tallas=['XS','S','M','L','XL','XXL','XXXL',26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46];
+      // require_once('');
+      require_once("Classes/Product.php");
+      require_once("Classes/Category.php");
+      require_once("Classes/SubCategory.php");
+      require_once("Classes/Type.php");
+      $categoria = new Category;
+      $cat = $categoria->getAll();
 
-      // $ay_tallas=[
-      //         'Calzado'=>[26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45],
-      //         'Indumentaria'=>[
-      //             'Pantalones'=>[26,28,30,32,34,36,38,40,42,44,46,48],
-      //             'Otros'=>['XS','S','M','L','XL','XXL','XXXL']
-      //   ]
-      // ];
+      $subcategoria = new SubCategory;
+      $subcat = $subcategoria->getAll();
+
+      $Otype = new Type;
+      $type = $Otype->getAll();
+
+      // var_dump($_POST);
+      var_dump($_FILES);
+
+
+      $ay_genero=['Hombre','Mujer','Niñe'];
+      // $ay_tallas=['XS','S','M','L','XL','XXL','XXXL',26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46];
+
       $prod_errores=[];
+      $nombreImagen=uniqid();
 
        if($_POST){
 
-          $prod_nombre = trim($_POST['prod_nombre']);
-          $prod_codigo = trim($_POST['prod_codigo']);
-          $prod_genero =  trim($_POST['prod_genero']);
-      		$prod_categoria = trim($_POST['prod_categoria']);
-          // $prod_cantidad = trim($_POST['prod_cantidad']);
-      		// $prod_talla = trim($_POST['prod_talla']);
+          $name = trim($_POST['prod_nombre']);
+          $product_code = trim($_POST['prod_codigo']);
+          $product_type =  trim($_POST['prod_tipo']);
+      		$subcategories_id = trim($_POST['prod_subcategoria']);      //asignar
+      		$categories_id = trim($_POST['prod_categoria']);
+          $quantity=trim($_POST['prod_cantidad']);
+          $color =trim($_POST['prod_color']);
+          $description=trim($_POST['prod_descripcion']);
+          $price=trim($_POST['prod_precio']);
+          $price_list=trim($_POST['prod_precio_lista']);
+          $size=trim($_POST['prod_talla']);
+          $image='images/prod_img/'.$nombreImagen.'.'.pathinfo($_FILES['prod_foto']['name'],PATHINFO_EXTENSION);
 
-          // $prod_subcategoria= trim($_POST['prod_subcategoria']);
-          $prod_precio=trim($_POST['prod_precio']);
-          $prod_precio_lista=trim($_POST['prod_precio_lista']);
-      		// $prod_color= trim($_POST['prod_color']);
-          $prod_descripcion=trim($_POST['prod_descripcion']);
+          // $prod_errores=validarProducto($_POST,$_FILES);
+        //   if (empty($errores))
+        // 	{
+        // 		if (count($errores) == 0)
+        // 		{
+        // 			// $user = new User([$name, $email, $pass]);
+        // 			// $DBJSON = new DBJSON ();
+        //
+        // 			$user = new User(['name'=>$name, 'email'=>$email, 'password'=>$pass, 'type_users_id'=>1]);
+        // 			$user->save();
+        //
+        // 		}
+      	//   }
+        // }
 
-          $prod_errores=validarProducto($_POST,$_FILES);
-          if (empty($prod_errores)) {
+          $product = new Product
+          ( ['name'=>$name, 'product_code'=>$product_code,
+            'product_type'=>$product_type, 'subcategories_id'=>$subcategories_id,
+            'categories_id'=> $categories_id, 'quantity'=>$quantity,
+            'color'=> $color , 'description'=> $description,
+            'price'=> $price ,'price_list' => $price_list,
+            'size' => $size, 'image'=> $image
+          ] );
+        // var_dump($product);
+        // exit;
+          guardarProdImagen($_FILES,$nombreImagen);
+          $product->saveProduct();
+          // if (empty($prod_errores)) {
+          //
+    			// 	if (count($prod_errores) == 0)
+          //   {
+          //     new Product =
+          //     (['name'=>$name, 'product_code'=>$product_code,
+          //       'product_type'=>$product_type, 'subcategories_id'=>$subcategories_id,
+          //       'categories_id'=> $categories_id, 'quantity'=>$quantity,
+          //       'color'=> $color , 'description'=> $description,
+          //       'price'=> $price ,'price_list' => $price_list,
+          //       'size' => $size, 'image'=> $image
+          //     ]);
+          //
+          //
+          //
+          //
+          //
+      		// 		guardarProducto($_POST,$_FILES,$nombreImagen) ;
+          //     guardarProdImagen('prod_foto',$nombreImagen);
+          //     //guardarProducto($_POST,$_FILES,$nombreImagen);
+    			// 	}
+    			// }
 
-    				if (count($prod_errores) == 0) {
-              $nombreImagen=uniqid();
-      				guardarProducto($_POST,$_FILES,$nombreImagen) ;
-              guardarProdImagen('prod_foto',$nombreImagen);
-              //guardarProducto($_POST,$_FILES,$nombreImagen);
-    				}
-    			}
        }
      ?>
 
@@ -84,50 +132,50 @@
               <div class="row">
                  <div class="col-sm-6">
                    <div class="form-group ">
-                     <label class="control-label">Genero :</label>
-                     <select class="form-control" class="" name="prod_genero">
-                      <option value="">Elegir genero :</option>
-                        <?php foreach ($ay_genero  as $genero): ?>
-                            <?php if ($genero == $genero ): ?>
-                                <option selected value="<?=$genero?>"><?=$genero?></option>
-                            <?php else: ?>
-                                <option value="<?=$genero?>"><?=$genero?></option>
-                            <?php endif; ?>
+                     <label class="control-label">Categoria :</label>
+                     <select class="form-control" class="" name="prod_categoria">
+                      <option value="">Elegir Categoria :</option>
+                        <?php foreach ($cat  as  $key ): ?>
+                          <?php if ($key['name'] == $key['name'] ): ?>
+                              <option selected value="<?=$key['id']?>"> <?=$key['name']?> </option>
+                          <?php else: ?>
+                              <option value="<?=$key['id']?>"><?=$key['name']?></option>
+                          <?php endif; ?>
                         <?php endforeach; ?>
                       </select>
-                     <span><?= ($prod_errores['prod_genero'])??''?></span>
+                     <span><?= ($prod_errores['prod_categoria'])??''?></span>
                    </div>
                  </div>
                  <div class="col-sm-6">
                    <div class="form-group ">
-                     <label class="control-label">Categoria :</label>
-                     <select class="form-control" class="" name="prod_categoria">
-                      <option value="">Elegir Categoria :</option>
-                        <?php foreach ($ay_categoria  as  $categoria): ?>
-                            <?php if ($categoria == $categoria ): ?>
-                                <option selected value="<?=$categoria?>"><?=$categoria?></option>
-                            <?php else: ?>
-                                <option value="<?=$categoria?>"><?=$categoria?></option>
-                            <?php endif; ?>
+                     <label class="control-label">Sub Categoria :</label>
+                     <select class="form-control" class="" name="prod_subcategoria">
+                      <option value="">Elegir Sub_Categoria :</option>
+                        <?php foreach ($subcat  as  $key ): ?>
+                          <?php if ($key['name'] == $key['name'] ): ?>
+                              <option selected value="<?=$key['id']?>"> <?=$key['name']?> </option>
+                          <?php else: ?>
+                              <option value="<?=$key['id']?>"><?=$key['name']?></option>
+                          <?php endif; ?>
                         <?php endforeach; ?>
                       </select>
-                     <span><?= ($prod_errores['prod_categoria'])??''?></span>
+                     <span><?= ($prod_errores['prod_subcategoria'])??''?></span>
                    </div>
                  </div>
               </div>
               <div class="row">
                  <div class="col-sm-6">
                    <div class="form-group ">
-                     <label class="control-label">Tipo de Producto :</label>
+                     <label class="control-label">Tipo :</label>
                      <select class="form-control" class="" name="prod_tipo">
-                      <option value="">Elegir tipo de Producto :</option>
-                        <?php foreach ($ay_tipoproducto  as $tipoproducto): ?>
-                            <?php if ($tipoproducto == $tipoproducto ): ?>
-                                <option selected value="<?=$tipoproducto?>"><?=$tipoproducto?></option>
-                            <?php else: ?>
-                                <option value="<?=$tipoproducto?>"><?=$tipoproducto?></option>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
+                      <option value="">Elegir tipo :</option>
+                      <?php foreach ($type  as  $key ): ?>
+                        <?php if ($key['name'] == $key['name'] ): ?>
+                            <option selected value="<?=$key['id']?>"> <?=$key['name']?> </option>
+                        <?php else: ?>
+                            <option value="<?=$key['id']?>"><?=$key['name']?></option>
+                        <?php endif; ?>
+                      <?php endforeach; ?>
                       </select>
                      <span><?= ($prod_errores['prod_tipo'])??''?></span>
                    </div>
@@ -135,16 +183,7 @@
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Talla :</label>
-                     <select class="form-control" class="" name="prod_talla">
-                      <option value="">Elegir Talla :</option>
-                        <?php foreach ($ay_tallas  as $talla ): ?>
-                            <?php if ($talla == $talla ): ?>
-                                <option selected value="<?=$talla?>"><?=$talla?></option>
-                            <?php else: ?>
-                                <option value="<?=$talla?>"><?=$talla?></option>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                      </select>
+                     <input type="text" class="form-control" name="prod_talla" value="">
                      <span><?= ($prod_errores['prod_talla'])??''?></span>
                    </div>
                  </div>

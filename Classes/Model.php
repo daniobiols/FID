@@ -8,7 +8,7 @@ abstract class Model
   public $columns;
   public $datos;
   protected $db;
-  public function __construct($datos)
+  public function __construct($datos=null)
   {
     // $datos=[]
     $this->datos = $datos;
@@ -20,7 +20,7 @@ abstract class Model
       // var_dump($this->datos['email']);
     $this->insert();
     } else {
-      // $this->update();
+      $this->update();
     }
   }
   private function insert()
@@ -43,5 +43,14 @@ abstract class Model
     $stmt->bindValue(':id', $id);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
+
+  public function getAll()
+  {
+    return $this->db->traerInfo($this->table);
+  }
+
+  public function saveProduct(){
+    $this->insert();
   }
 }

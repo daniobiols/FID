@@ -1,9 +1,9 @@
 <?php
 require_once('Model.php');
 
-class Category extends Model
+class Type extends Model
 {
-  public $table = 'categories';
+  public $table = 'types';
   public $columns = ['name'];
 }
  ?>

@@ -11,8 +11,8 @@ class DBMySQL extends DB
 	protected $opt     = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 	protected $host    = 'mysql:host=127.0.0.1;dbname=FID;port=3306';
 	protected $db_user = 'root';
-	protected $db_pass = 'root';
-	protected $columnas = '';
+	protected $db_pass = '';
+	protected $columnas ='';
 	protected $values = '';
 	public $conn;
 
@@ -132,7 +132,18 @@ class DBMySQL extends DB
 					var_dump($e);
 					echo $e->getMessage();
 		}
+	}
+
+	public function traerInfo($entidad){
+
+		$query = $this->conn->prepare("SELECT * FROM $entidad");
+		$query->execute();
+		// var_dump($entidad);
+		$tabla = $query->fetchAll(PDO::FETCH_ASSOC);
+		// var_dump($tabla);
+		return $tabla;
 
 	}
+
 
 }

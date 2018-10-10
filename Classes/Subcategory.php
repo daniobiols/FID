@@ -1,14 +1,9 @@
 <?php
+require_once('Model.php');
 
-/**
- *
- */
-class Subcategory
+class SubCategory extends Model
 {
-
-  function __construct(argument)
-  {
-    // code...
-  }
+  public $table = 'subcategories';
+  public $columns = ['name','categories_id'];
 }
  ?>

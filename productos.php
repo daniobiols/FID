@@ -1,9 +1,9 @@
 <?php
 
-require_once('prod_funciones.php');
-require_once('funciones.php');
+// require_once('prod_funciones.php');
+// require_once('funciones.php');
 
-$productos= traerTodosProductos();
+// $productos= traerTodosProductos();
 ?>
 
 <!DOCTYPE html>
