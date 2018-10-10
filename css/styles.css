@@ -98,9 +98,10 @@ p {
   justify-content: space-between;
 }
 
-/* .boton-login button{
-  margin: 10px;
-} */
+.separador
+{
+	width: 5px;
+}
 
 .modal-footer{
   display: flex;
