@@ -20,7 +20,8 @@ if ($_POST)
   {
   	$name = trim($_POST['name']);
   	$email = trim($_POST['email']);
-  	$pass = trim($_POST['password']);
+    // $pass = trim($_POST['password']);
+    $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
   	$rpass = trim($_POST['rpassword']);
 
     if (empty($errores))

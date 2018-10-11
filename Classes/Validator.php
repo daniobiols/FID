@@ -35,10 +35,12 @@ class Validator
     {
       $errores["password"] = "Por favor ingresa una contraseña";
     } else if ($usuario != null) {
-        if (password_verify($datos["password"], $usuarioPass->datos) == true)
-        {
-          $errores["password"] = "La contraseña no es valida";
-        }
+      $hash = $db->getPassword($datos["email"]);
+      // var_dump($hash);
+      if (!password_verify($datos["password"], $hash))
+      {
+        $errores["password"] = "La contraseña no es valida";
+      }
     }
     return $errores;
   }
@@ -56,7 +58,7 @@ class Validator
     // echo "<br>";
     // var_dump($usuarioPass->datos);
 
-    foreach ($usuario->datos as $value)
+    foreach ($usuario as $value)
     {
       $email = $value;
     }
@@ -88,11 +90,6 @@ class Validator
     if ($datos["password"] == "")
     {
       $errores["password"] = "Por favor ingresa una contraseña";
-    } else if ($usuario != null) {
-        if (password_verify($datos["password"], $usuarioPass->datos) == true)
-        {
-          $errores["password"] = "La contraseña no es valida";
-        }
     }
 
     if ($datos["password"] != $datos["rpassword"])

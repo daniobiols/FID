@@ -7,7 +7,7 @@ require_once("DB.php");
 class DBMySQL extends DB
 {
 	protected $opt     = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-	protected $host    = 'mysql:host=127.0.0.1;dbname=FID;port=3306';
+	protected $host    = 'mysql:host=127.0.0.1;dbname=FID;port=8889';
 	protected $db_user = 'root';
 	protected $db_pass = 'root';
 	protected $columnas = '';
@@ -68,13 +68,14 @@ class DBMySQL extends DB
 		$query = $this->conn->prepare("SELECT * FROM users WHERE email = '$email'");
 		$query->execute();
 		$usuarioFormatoArray = $query->fetch(PDO::FETCH_ASSOC);
-		if ($usuarioFormatoArray)
-		{
-			$usuario = new User($usuarioFormatoArray["password"]);
-			return $usuario;
-		} else {
-			return null;
-		}
+		// if ($usuarioFormatoArray)
+		// {
+		// 	$usuario = new User($usuarioFormatoArray["password"]);
+		// 	return $usuario;
+		// } else {
+		// 	return null;
+		// }
+		return $usuarioFormatoArray['password'];
 	}
 	public function traeTodaLaBase()
 	{

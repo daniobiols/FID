@@ -142,7 +142,7 @@
                 <form class="" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Nombre:</label>
-                    <input type="text" name='name' class="form-control" id="recipient-name" value="">
+                    <input type="text" name='name' class="form-control" id="recipient-name" value='<?=$name?>'>
                     <?php if (isset($errores['name'])): ?>
                       <span style='color: red;'>
                         <?=$errores['name'];?>
@@ -151,7 +151,7 @@
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Correo Electrónico:</label>
-                    <input type="text" name='email' class="form-control" id="recipient-name" value="">
+                    <input type="text" name='email' class="form-control" id="recipient-name" value='<?=$email?>'>
                     <?php if (isset($errores['email'])): ?>
                       <span style='color: red;'>
                         <?=$errores['email'];?>
