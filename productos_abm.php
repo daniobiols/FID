@@ -14,7 +14,7 @@
       $type = $Otype->getAll();
 
       // var_dump($_POST);
-      var_dump($_FILES);
+      // var_dump($_FILES);
 
       $prod_errores=[];
       $nombreImagen=uniqid();

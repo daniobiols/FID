@@ -3,7 +3,7 @@
       require_once('Classes/Category.php');
       require_once('Classes/SubCategory.php');
       require_once('Classes/Type.php');
-      
+
       $prod = new Product;
       $producto =  $prod->find($_GET['id']);
 
@@ -15,9 +15,9 @@
 
       $tipo = New Type;
       $type = $tipo->find($producto['product_type']);
-
-      var_dump($categoria);
-      var_dump($subcategoria);
+      // 
+      // var_dump($categoria);
+      // var_dump($subcategoria);
      ?>
 
     <!DOCTYPE html>
