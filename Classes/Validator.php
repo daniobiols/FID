@@ -99,4 +99,41 @@ class Validator
 
     return $errores;
   }
+  function validarProductos($prod_data, $prod_archivo) {
+
+      $name = trim($prod_data['prod_nombre']);
+      $product_code =trim($prod_data['prod_codigo']);
+      $categories_id = trim($prod_data['prod_categoria']);
+      $type =trim($prod_data['prod_tipo']);
+      $size = trim($prod_data['prod_talla']);
+      $color= trim($prod_data['prod_color']);
+      $quantity= trim($prod_data['prod_cantidad']);
+      $price=trim($prod_data['prod_precio']);
+      $price_list=trim($prod_data['prod_precio_lista']);
+      $description=trim($prod_data['prod_descripcion']);
+      $subcategories_id = trim($prod_data['prod_subcategoria']);
+
+      $prod_errores=[];
+
+      if ($prod_nombre=='') {
+          $prod_errores['prod_nombre']="Ingrese el nombre del producto";
+      }
+      if ($prod_categoria=='') {
+          $prod_errores['prod_categoria']="Ingrese Categoria";
+      }
+      // if ($prod_cantidad <= 0) {
+      //     $prod_errores['prod_cantidad']="Ingrese cantidad del producto";
+      // }
+      if ($prod_precio < 0) {
+          $prod_errores['prod_precio']="Ingrese Precio al producto";
+      }
+      if($prod_precio_lista < 0){
+        $prod_errores['prod_precio_lista']="Ingrese precio de lista para el producto";
+      }
+      if ($prod_color=='') {
+        $prod_errores['prod_color']="Ingrese un color para el producto";
+      }
+
+      return $prod_errores;
+  }
 }

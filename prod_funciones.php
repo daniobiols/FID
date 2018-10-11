@@ -132,11 +132,5 @@ function guardarProdImagen($laImagen,$nombreImagen){
 
       return $ultimoID +1;
     }
-  //
-  //
-  //
-  //
-  //
-
 
     ?>
