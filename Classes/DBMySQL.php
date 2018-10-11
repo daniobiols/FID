@@ -54,11 +54,13 @@ class DBMySQL extends DB
 		$usuarioFormatoArray = $query->fetch(PDO::FETCH_ASSOC);
 		if ($usuarioFormatoArray)
 		{
-			$usuario = new User([$usuarioFormatoArray["email"]]);
+			// $usuario = new User([$usuarioFormatoArray["email"]]);
 			// $usuario = new User($usuarioFormatoArray["email"], $usuarioFormatoArray["password"], $usuarioFormatoArray["id"]);
 			// $usuario = [$usuarioFormatoArray["email"]]);
+			//
+			// return $usuario;
+			return $usuarioFormatoArray['email'];
 
-			return $usuario;
 		} else {
 			return null;
 		}

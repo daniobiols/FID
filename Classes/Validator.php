@@ -58,10 +58,10 @@ class Validator
     // echo "<br>";
     // var_dump($usuarioPass->datos);
 
-    foreach ($usuario as $value)
-    {
-      $email = $value;
-    }
+    // foreach ($usuario as $value)
+    // {
+    //   $email = $value;
+    // }
 
     foreach ($datos as $clave => $valor)
     {
@@ -74,7 +74,7 @@ class Validator
       $errores["name"] = "Ingresa tu nombre";
     }
 
-    if ($datos["email"] == $email)
+    if ($datos["email"] == $usuario)
     {
       $errores["email"] = "Este correo ya existe";
     }
