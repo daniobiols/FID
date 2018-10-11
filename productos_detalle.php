@@ -1,6 +1,23 @@
      <?php
-      require_once('prod_funciones.php');
-      $producto = traerPorProductID ($_GET['prod_id']);
+      require_once('Classes/Product.php');
+      require_once('Classes/Category.php');
+      require_once('Classes/SubCategory.php');
+      require_once('Classes/Type.php');
+      
+      $prod = new Product;
+      $producto =  $prod->find($_GET['id']);
+
+      $cat = New Category;
+      $categoria = $cat->find($producto['categories_id']);
+
+      $subcat = New SubCategory;
+      $subcategoria = $subcat->find($producto['subcategories_id']);
+
+      $tipo = New Type;
+      $type = $tipo->find($producto['product_type']);
+
+      var_dump($categoria);
+      var_dump($subcategoria);
      ?>
 
     <!DOCTYPE html>
@@ -29,41 +46,41 @@
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Nombre de Producto:</label>
-                     <input type="text" class="form-control" value=<?=$producto['prod_nombre']  ?> readonly>
+                     <input type="text" class="form-control" value=<?=$producto['name']  ?> readonly>
                    </div>
                  </div>
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Codigo de Producto:</label>
-                     <input type="text" class="form-control" value=<?= $producto['prod_codigo']  ?> readonly>
+                     <input type="text" class="form-control" value=<?= $producto['product_code']  ?> readonly>
                    </div>
                  </div>
               </div>
               <div class="row">
                  <div class="col-sm-6">
                    <div class="form-group ">
-                     <label class="control-label">Genero :</label>
-                     <input type="text" class="form-control" value=<?= $producto['prod_genero']  ?> readonly>
+                     <label class="control-label">Tipo :</label>
+                     <input type="text" class="form-control" value=<?= $type['name']  ?> readonly>
                    </div>
                  </div>
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Categoria:</label>
-                     <input type="text" class="form-control" value=<?= $producto['prod_categoria']  ?> readonly>
+                     <input type="text" class="form-control" value=<?= $categoria['name']  ?> readonly>
                    </div>
                  </div>
               </div>
               <div class="row">
                  <div class="col-sm-6">
                    <div class="form-group ">
-                     <label class="control-label">Tipo de Producto :</label>
-                     <input type="text" class="form-control" value=<?=$producto['prod_tipo']  ?> readonly>
+                     <label class="control-label">Subcategoria :</label>
+                     <input type="text" class="form-control" value=<?=$subcategoria['name']  ?> readonly>
                    </div>
                  </div>
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Talla :</label>
-                     <input type="text" class="form-control" value=<?= $producto['prod_talla'] ?> readonly>
+                     <input type="text" class="form-control" value=<?= $producto['size'] ?> readonly>
                    </div>
                  </div>
               </div>
@@ -71,14 +88,14 @@
                  <div class="col-sm-6">
                      <div class="form-group ">
                        <label class="control-label">Color:</label>
-                       <input type="text" class="form-control" name="prod_color" value=<?= $producto['prod_color'] ?> readonly>
+                       <input type="text" class="form-control" name="color" value=<?= $producto['color'] ?> readonly>
                      </div>
                   </div>
                  <div class="col-sm-3">
                    <div class="form-group ">
                      <div class="">
                        <label class="control-label">Es Destacado :</label>
-                       <input type="checkbox" class="form-control checkbox" value=<?= $producto["prod_destacado"] ?> readonly>
+                       <input type="checkbox" class="form-control checkbox" value=<?= $producto["is_popular"] ?> readonly>
                      </div>
                    </div>
                  </div>
@@ -86,7 +103,7 @@
                    <div class="form-group ">
                      <div class="">
                        <label for="prod_cantidad" class="control-label">Cantidad :</label>
-                       <input type="number" class="form-control checkbox" value=<?= $producto["prod_cantidad"] ?> readonly>
+                       <input type="number" class="form-control checkbox" value=<?= $producto["quantity"] ?> readonly>
                      </div>
                    </div>
                  </div>
@@ -95,14 +112,14 @@
                  <div class="col-sm-6">
                      <div class="form-group ">
                        <label class="control-label">Precio:</label>
-                       <input type="number" class="form-control" name="prod_precio" value="<?=$producto['prod_precio']?>" readonly>
+                       <input type="number" class="form-control" name="prod_precio" value="<?=$producto['price']?>" readonly>
                      </div>
                   </div>
 
                  <div class="col-sm-6">
                    <div class="form-group ">
                      <label class="control-label">Precio Lista:</label>
-                     <input type="number" class="form-control" name="prod_precio_lista" value="<?=$producto['prod_precio_lista']?>" readonly>
+                     <input type="number" class="form-control" name="prod_precio_lista" value="<?=$producto['price_list']?>" readonly>
                    </div>
                  </div>
               </div>
@@ -110,13 +127,13 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="prod_descripcion">Descripcion</label>
-                        <textarea  readonly="true" name="prod_descripcion" rows="3" cols="40"  ><?= $producto['prod_descripcion'] ?>  </textarea >
+                        <textarea  readonly="true" name="prod_descripcion" rows="3" cols="40"  ><?= $producto['description'] ?>  </textarea >
 
                     </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group ">
-                      <img class="form-control"  src=<?= $producto['prod_foto'] ?> alt="">
+                      <img class="form-control"  src=<?= $producto['image'] ?> alt="">
                   </div>
                 </div>
               </div>

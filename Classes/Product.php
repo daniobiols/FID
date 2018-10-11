@@ -12,20 +12,20 @@ class Product extends Model
   			$prod_errores = [];
   			// var_dump($_FILES);
   	// var_dump()
-  			if ($_FILES[$laImagen]['error'] == UPLOAD_ERR_OK) {
+  			if ($laImagen['prod_foto']['error'] == UPLOAD_ERR_OK) {
   				// Capturo el nombre de la imagen, para obtener la extensión
-  				$nombreArchivo = $_FILES[$laImagen]['name'];
+  				$nombreArchivo = $laImagen['prod_foto']['name'];
   				// Obtengo la extensión de la imagen
   				$ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
   				// Capturo el archivo temporal
-  				$archivoFisico = $_FILES[$laImagen]['tmp_name'];
+  				$archivoFisico = $laImagen['prod_foto']['tmp_name'];
   				// var_dump($_FILES);
   				// Pregunto si la extensión es la deseada
   				if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {
   					// Armo la ruta donde queda gurdada la imagen
   					$dondeEstoyParado = dirname(__FILE__);
 
-  					$rutaFinalConNombre = $dondeEstoyParado . '/images/prod_img/' .$nombreImagen. '.' . $ext;
+  					$rutaFinalConNombre = $dondeEstoyParado . '/../images/prod_img/' .$nombreImagen. '.' . $ext;
 
   					// Subo la imagen definitivamente
   					move_uploaded_file($archivoFisico, $rutaFinalConNombre);

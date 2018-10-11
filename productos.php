@@ -1,9 +1,11 @@
 <?php
 
-// require_once('prod_funciones.php');
+require_once('Classes/Product.php');
 // require_once('funciones.php');
-
-// $productos= traerTodosProductos();
+$prod = New Product ;
+$products = $prod->getAll();
+	// echo "<pre>";
+ // var_dump($products);
 ?>
 
 <!DOCTYPE html>
@@ -47,20 +49,19 @@
 								<form class="" action="productos_detalle.php" method="get">
 
 
-                <article id="Hombre">
+                <article id=1>
                     <!-- <h2>Mujer</h2> -->
                     <div class="row articulos">
-											<?php foreach ($productos as  $producto) {?>
-												<?php if ($producto['prod_genero']=='Hombre'): ?>
-
+											<?php foreach ($products as  $producto => $key) {?>
+												<?php if ($key['product_type']==1): ?>
                         <div class="shadow p-3 mb-5 bg-white rounded">
                             <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="<?= $producto['prod_foto'] ?>" alt="Card image cap">
+                                <img class="card-img-top" src="<?= $key['image'] ?>" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title"> $/. <?= $producto['prod_precio'] ?></h5>
-                                    <p class="card-text"> <?= $producto['prod_nombre'] ?></p>
+                                    <h5 class="card-title"> $/. <?= $key['price'] ?></h5>
+                                    <p class="card-text"> <?= $key['name'] ?></p>
                                     <a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
-																		<a href="productos_detalle.php?prod_id=<?=$producto['prod_id']  ?>" class="btn btn-outline-dark">Detalle</a>
+																		<a href="productos_detalle.php?id=<?=$key['id']  ?>" class="btn btn-outline-dark">Detalle</a>
                                 </div>
                             </div>
                         </div>
@@ -68,50 +69,50 @@
 											<?php } ?>
 										</div>
 								</article>
-								<article id="Mujer">
-										<!-- <h2>Mujer</h2> -->
-										<div class="row articulos">
-											<?php foreach ($productos as  $producto) :?>
-												<?php if ($producto['prod_genero']=='Mujer'): ?>
-
-												<div class="shadow p-3 mb-5 bg-white rounded">
-														<div class="card" style="width: 18rem;">
-																<img class="card-img-top" src="<?= $producto['prod_foto'] ?>" alt="Card image cap">
-																<div class="card-body">
-																		<h5 class="card-title"> $/. <?= $producto['prod_precio'] ?></h5>
-																		<p class="card-text"> <?= $producto['prod_nombre'] ?></p>
-																		<a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
-																		<a href="productos_detalle.php?prod_id=<?=$producto['prod_id']  ?>" class="btn btn-outline-dark">Detalle</a>
-																</div>
-														</div>
-												</div>
-												<?php endif; ?>
-											<?php endforeach ?>
-										</div>
+								<article id=2>
+								    <!-- <h2>Mujer</h2> -->
+								    <div class="row articulos">
+								      <?php foreach ($products as  $producto => $key) :?>
+								        <?php if ($key['product_type']==2): ?>
+								        <div class="shadow p-3 mb-5 bg-white rounded">
+								            <div class="card" style="width: 18rem;">
+								                <img class="card-img-top" src="<?= $key['image'] ?>" alt="Card image cap">
+								                <div class="card-body">
+								                    <h5 class="card-title"> $/. <?= $key['price'] ?></h5>
+								                    <p class="card-text"> <?= $key['name'] ?></p>
+								                    <a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
+								                    <a href="productos_detalle.php?id=<?=$key['id']  ?>" class="btn btn-outline-dark">Detalle</a>
+								                </div>
+								            </div>
+								        </div>
+								        <?php endif; ?>
+								      <?php endforeach ?>
+								    </div>
 								</article>
-								<article id="Niñe">
-										<!-- <h2>Mujer</h2> -->
-										<div class="row articulos">
-											<?php foreach ($productos as  $producto) {?>
-												<?php if ($producto['prod_genero']=='Niñe'): ?>
+								<article id=3 >
+								    <!-- <h2>Mujer</h2> -->
+								    <div class="row articulos">
+								      <?php foreach ($products as  $producto=> $key) {?>
+								        <?php if ($key['product_type']==3): ?>
 
-												<div class="shadow p-3 mb-5 bg-white rounded">
-														<div class="card" style="width: 18rem;">
-																<img class="card-img-top" src="<?= $producto['prod_foto'] ?>" alt="Card image cap">
-																<div class="card-body">
-																		<h5 class="card-title"> $/. <?= $producto['prod_precio'] ?></h5>
-																		<p class="card-text"> <?= $producto['prod_nombre'] ?></p>
-																		<a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
-																		<a href="productos_detalle.php?prod_id=<?=$producto['prod_id']  ?>" class="btn btn-outline-dark">Detalle</a>
-																</div>
-														</div>
-												</div>
-												<?php endif; ?>
-											<?php } ?>
-										</div>
+								        <div class="shadow p-3 mb-5 bg-white rounded">
+								            <div class="card" style="width: 18rem;">
+								                <img class="card-img-top" src="<?=$key['image'] ?>" alt="Card image cap">
+								                <div class="card-body">
+								                    <h5 class="card-title"> $/. <?= $key['price'] ?></h5>
+								                    <p class="card-text"> <?= $key['name'] ?></p>
+								                    <a href="#" class="btn btn-outline-dark">Agregar al carrito</a>
+								                    <a href="productos_detalle.php?id=<?=$key['id']  ?>" class="btn btn-outline-dark">Detalle</a>
+								                </div>
+								            </div>
+								        </div>
+								        <?php endif; ?>
+								      <?php } ?>
+								    </div>
 								</article>
 								</form>
             </section>
+
 						<hr style="color: #0054b2;" />
 
 						<!--Pie de pagina-->

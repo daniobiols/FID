@@ -16,10 +16,6 @@
       // var_dump($_POST);
       var_dump($_FILES);
 
-
-      $ay_genero=['Hombre','Mujer','Niñe'];
-      // $ay_tallas=['XS','S','M','L','XL','XXL','XXXL',26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46];
-
       $prod_errores=[];
       $nombreImagen=uniqid();
 
@@ -36,23 +32,8 @@
           $price=trim($_POST['prod_precio']);
           $price_list=trim($_POST['prod_precio_lista']);
           $size=trim($_POST['prod_talla']);
+
           $image='images/prod_img/'.$nombreImagen.'.'.pathinfo($_FILES['prod_foto']['name'],PATHINFO_EXTENSION);
-
-          // $prod_errores=validarProducto($_POST,$_FILES);
-        //   if (empty($errores))
-        // 	{
-        // 		if (count($errores) == 0)
-        // 		{
-        // 			// $user = new User([$name, $email, $pass]);
-        // 			// $DBJSON = new DBJSON ();
-        //
-        // 			$user = new User(['name'=>$name, 'email'=>$email, 'password'=>$pass, 'type_users_id'=>1]);
-        // 			$user->save();
-        //
-        // 		}
-      	//   }
-        // }
-
           $product = new Product
           ( ['name'=>$name, 'product_code'=>$product_code,
             'product_type'=>$product_type, 'subcategories_id'=>$subcategories_id,
@@ -63,8 +44,11 @@
           ] );
         // var_dump($product);
         // exit;
-          guardarProdImagen($_FILES,$nombreImagen);
+        // var_dump($product);
+        // var_dump($product->guardarProdImagen($_FILES,$nombreImagen));
           $product->saveProduct();
+          $product->guardarProdImagen($_FILES,$nombreImagen);
+
           // if (empty($prod_errores)) {
           //
     			// 	if (count($prod_errores) == 0)
