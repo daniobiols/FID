@@ -152,9 +152,6 @@ if ($_POST)
 	          <a href="preguntas_frecuentes.php"><img class="box-img" src="./images/blog.jpg" alt=""></a>
 	      	</div>
 				</div>
-
-      <hr style="color: #0054b2;" />
-
 			<!--Pie de pagina-->
   		<?php require_once("footer.php") ?>
 

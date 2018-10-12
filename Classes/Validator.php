@@ -1,7 +1,5 @@
 <?php
 
-require_once("DB.php");
-
 class Validator
 {
   function validarLogin($datos)
@@ -84,8 +82,6 @@ class Validator
     } else if (filter_var($datos["email"], FILTER_VALIDATE_EMAIL) == false) {
       $errores["email"] = "El mail tiene que ser un mail";
     }
-
-
 
     if ($datos["password"] == "")
     {

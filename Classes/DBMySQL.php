@@ -1,6 +1,4 @@
-
 <!-- <pre> -->
-
 <?php
 
 require_once("DB.php");
@@ -46,6 +44,7 @@ class DBMySQL extends DB
 			echo $e->getMessage();
 		}
 	}
+
 	function searchEmail($email)
 	{
 		$query = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
@@ -65,6 +64,7 @@ class DBMySQL extends DB
 			return null;
 		}
 	}
+
 	function getPassword($email)
 	{
 		$query = $this->conn->prepare("SELECT * FROM users WHERE email = '$email'");
@@ -79,21 +79,24 @@ class DBMySQL extends DB
 		// }
 		return $usuarioFormatoArray['password'];
 	}
-	public function traeTodaLaBase()
-	{
-		$query = $this->conexion->prepare("SELECT * FROM usuarios");
-		$query->execute();
-		$usuariosFormatoArray = $query->fetchAll(PDO::FETCH_ASSOC);
-		//Esta variable va a traer todos los usuarios en formato array, pero queremos objetos...
-		$usuariosFormatoClase = [];
-		//asi que armamos nuestro array de usuarios EN FORMATO DE CLASE y lo "foreacheamos" (?)
-		foreach ($usuariosFormatoArray as $usuario):
-				//array DE OBJETOS del tipo Usuario, nada mas y nada menos. Como se procesan despues, es responsabilidad de otra clase.
-				$usuariosFormatoClase[] = new Usuario($usuario["email"], $usuario["password"], $usuario["id"]);
-		endforeach;
-		return $usuariosFormatoClase;
-		//Aclaro de nuevo, el array que devuelve este metodo es un ARRAY DE OBJETOS.
-	}
+
+	// public function traeTodaLaBase()
+	// // {
+	// // 	$query = $this->conn->prepare("SELECT * FROM usuarios");
+	// // 	$query->execute();
+	// // 	$usuariosFormatoArray = $query->fetchAll(PDO::FETCH_ASSOC);
+	// // 	//Esta variable va a traer todos los usuarios en formato array, pero queremos objetos...
+	// // 	$usuariosFormatoClase = [];
+	// // 	//asi que armamos nuestro array de usuarios EN FORMATO DE CLASE y lo "foreacheamos" (?)
+	// // 	foreach ($usuariosFormatoArray as $usuario):
+	// // 			//array DE OBJETOS del tipo Usuario, nada mas y nada menos. Como se procesan despues, es responsabilidad de otra clase.
+	// // 			$usuariosFormatoClase[] = new Usuario($usuario["email"], $usuario["password"], $usuario["id"]);
+	// // 	endforeach;
+	// // 	var_dump($usuariosFormatoClase);
+	// // 	exit;
+	// // 	return $usuariosFormatoClase;
+	// // 	//Aclaro de nuevo, el array que devuelve este metodo es un ARRAY DE OBJETOS.
+	// // }
 
 	//ACTUALIZAR PERFIL DEL USUARIO
 	public function UpdateUser($datos, $model)
@@ -123,14 +126,30 @@ class DBMySQL extends DB
 				}
 	}
 
-	public function traerInfo($entidad){
-
+	public function traerInfo($entidad)
+	{
 		$query = $this->conn->prepare("SELECT * FROM $entidad");
 		$query->execute();
 		// var_dump($entidad);
 		$tabla = $query->fetchAll(PDO::FETCH_ASSOC);
 		// var_dump($tabla);
 		return $tabla;
+	}
+
+	public function getUser($id, $table)
+	{
+		$query = $this->conn->prepare("SELECT * FROM $table WHERE email = :email");
+		$query->bindValue(":email", $id);
+		$query->execute();
+		$usuarioFormatoArray = $query->fetch(PDO::FETCH_ASSOC);
+		if ($usuarioFormatoArray)
+		{
+			// var_dump($usuarioFormatoArray);
+			// $usuario = new User([$usuarioFormatoArray["email"]]);
+			return $usuarioFormatoArray;
+		} else {
+			return null;
+		}
 	}
 
 

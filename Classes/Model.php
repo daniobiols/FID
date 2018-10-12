@@ -50,6 +50,11 @@ abstract class Model
     return $this->db->traerInfo($this->table);
   }
 
+  public function getUserInfo($id)
+  {
+    return $this->db->getUser($id, $this->table);
+  }
+
   public function saveProduct(){
     $this->insert();
   }
